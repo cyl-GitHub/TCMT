@@ -1,0 +1,21 @@
+/* fix for light gallery arrow position*/
+.lg-actions .lg-next, .lg-actions .lg-prev { position:fixed; }
+
+.greyBox.photolist { padding-right:0px; padding-bottom:0px; max-height:230px; overflow-y:hidden; }
+
+.photolist { line-height:0; font-size:0; }
+.photolist img { height:100px; width:auto; display:inline-block; margin:0 15px 15px 0; vertical-align:baseline; }
+.photolist .mgal { display:none; }
+
+@media only screen and (max-width: 667px) {
+    .greyBox.photolist { padding:2%; height:auto; max-height:none; }    
+    .photolist a { display:none; }
+    .photolist .list a { width:100%;}
+    .photolist a:first-child { display:inline-block; }
+    .photolist img { height:auto; width:100%; margin:0; vertical-align:top; }   
+    .photolist .mgal { position:absolute; bottom:2%; right:2%; display:block; color:#fff; font-size:50px;
+                        padding:5%; overflow:hidden; padding:14px; background:rgba(0,0,0,0.4); }
+}
+
+@media only screen and (max-width: 1400px) {
+}

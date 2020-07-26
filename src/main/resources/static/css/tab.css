@@ -1,0 +1,52 @@
+   
+    label.label-m   { display:none;}    
+    .tabs-menu      {   clear:both; padding:0; margin:0; }
+    .tabs-menu ul   {   padding:0; margin:0}
+    .tabs-menu li   {   background-color:#ececec; border-right:1px solid #fff; list-style:none; display:inline-block; 
+                        padding:20px 40px 20px 20px; margin:0 -2px 0 0;
+                                -webkit-border-top-right-radius: 15px;
+                                    -moz-border-radius-topright: 15px;
+                                        border-top-right-radius: 15px; }
+
+    .tabs-menu li.current   { position:relative; background-color:#812990; border-bottom:1px solid #fff; z-index:5; }
+
+    .tabs-menu a li         { color:#008c71; text-decoration:none; font-weight:bold; transition: all 0.3s ease-out;}
+    .tabs-menu a .current   { color:#fff;}
+    .tabs-menu a:hover li         { background-color:#ccc}
+
+    .tab            { border-top:15px solid #ececec; background-color:#fff; margin-bottom:100px; width:100%}
+    .tab:last-child { margin-bottom:0px;}
+
+    .tab-content    { width:100%; padding:40px 0 0 0 ; display:none;}
+
+    #tab1-1,
+    #tab2-1         { display:block; }
+
+
+    /* ==========================================================================
+        Media Style
+    ============================================================================= */
+    @media only screen and (max-width:667px) {
+
+    .tabs-menu      { display:none }
+    .tab            { border-top:5px solid #ececec; }
+    .tab-content    { padding:20px 0 0 0 ; }
+
+    select.tab { width:100%; padding:10px; margin:0; background:#812990; color:#fff; border:none; outline:none; font-size:16px; display: inline-block;
+
+                 -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+                    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+                         box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+                    -webkit-appearance:none;
+                       -moz-appearance:none;
+                            appearance:none;
+                                cursor:pointer;}
+
+    label.label-m           { position:relative; display: block;}
+    label.label-m:after     { content:'<>'; font-family: 'robotolight'; font-size:14px; color:#fff;
+                              right:8px; top:8px; padding:0 0 2px; border-bottom:1px solid #ddd; position:absolute; pointer-events:none;
+                             -webkit-transform:rotate(90deg);
+                                -moz-transform:rotate(90deg);
+                                 -ms-transform:rotate(90deg);
+                                     transform:rotate(90deg); }
+    }

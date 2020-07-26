@@ -1,0 +1,288 @@
+
+
+ 	/* • General content
+   	------------------------------------------------------------------------- */
+  	.general      		{ line-height: 2}
+  	.general img 		{ width:100%; height:auto;}
+  	.general a        	{ color:#42bec2; text-decoration:none;}
+  	.general a:hover  	{ color:#666;  text-decoration:none;}
+	   .general hr 		{ height:1px; background-color:#e7e7e7; border:none; margin:30px 0;}
+  
+
+ 	/* • Widget: icon + content + photo
+   	------------------------------------------------------------------------- */
+   	.widget1			      { padding:20px 0; }
+   	.widget1 .w1-col-l 	{ width:70%; float:left; }
+   	.widget1 .w1-col-r 	{ width:30%; float:left; }
+
+   	.widget1 .w1-col-l .w1-icon 	  { width:90px; float:left; }
+   	.widget1 .w1-col-l .w1-content 	{ width:calc(100% - 150px); float:left; padding:0 30px}
+   	.widget1 .w1-col-l .w1-content .w1-title { padding-bottom:10px}
+
+    .widget1.w1-half .w1-col-l  { width:52%;}
+    .widget1.w1-half .w1-col-r  { width:48% }
+    .widget1.w1-half .w1-col-l .w1-icon     { width:50px; float:left; }
+    .widget1.w1-half .w1-col-l .w1-content  { width:calc(100% - 110px); float:left; padding:0 30px}
+
+
+    .widget1.w1-swap .w1-col-l  { width:calc(70% - 30px);  float:right; order: 2; -webkit-order: 2; padding-left:30px }
+    .widget1.w1-swap .w1-col-r  { width:30%; float:left;  order: 1; -webkit-order: 1; }
+    .widget1.w1-swap .w1-col-l .w1-content  { width:calc(100% - 120px); float:left; padding-left:30px; padding-right:0}
+
+    .widget1.w1-half-swap .w1-col-l  { width:48%;  float:right; order: 2; -webkit-order: 2; padding-left:30px}
+    .widget1.w1-half-swap .w1-col-r  { width:calc(52% - 30px);  float:left;  order: 1; -webkit-order: 1; }
+    .widget1.w1-half-swap .w1-col-l .w1-icon     { width:50px; float:left; }
+    .widget1.w1-half-swap .w1-col-l .w1-content  { width:calc(100% - 80px); float:left; padding:0 0 0 30px}
+
+
+    @media only screen and (max-width: 1024px) {
+    .widget1 .w1-col-l .w1-icon     { width:50px; float:left; }
+    .widget1 .w1-col-l .w1-content  { width:calc(100% - 90px); padding:0 20px}
+
+    .widget1.w1-swap .w1-col-l  { width:calc(70% - 20px);  padding-left:20px }
+    .widget1.w1-swap .w1-col-l .w1-content  { width:calc(100% - 70px); float:left; padding-left:20px; padding-right:0; }
+
+    .widget1.w1-half-swap .w1-col-l              { width:49%; float:right; order: 2; -webkit-order: 2; padding-left:20px}
+    .widget1.w1-half-swap .w1-col-r              { width:calc(51% - 20px);  float:left;  order: 1; -webkit-order: 1; }
+    .widget1.w1-half-swap .w1-col-l .w1-content  { width:calc(100% - 70px); float:left; padding:0 0 0 20px}
+    }
+
+
+   	@media only screen and (max-width: 667px) {
+   	.widget1 .w1-col-l { width:100%; float:left; }
+   	.widget1 .w1-col-r { width:100%; float:left; margin-top:20px}
+
+   	.widget1 .w1-col-l .w1-icon 	  { width:50px; float:left; }
+   	.widget1 .w1-col-l .w1-content 	{ width:calc(100% - 65px); float:left; padding:0 0 0 15px}
+
+    .widget1.w1-half .w1-col-l  { width:100%;}
+    .widget1.w1-half .w1-col-r  { width:100% }
+    .widget1.w1-half .w1-col-l .w1-content  { width:calc(100% - 65px); float:left; padding:0 0 0 15px}
+
+
+    .widget1.w1-half-swap  { display:table; padding-top:0; padding-bottom:20px; }
+    .widget1.w1-half-swap .w1-col-l              { width:100%; float:none; order: 2; -webkit-order: 2; padding-left:0; display:table-footer-group;}
+    .widget1.w1-half-swap .w1-col-r              { width:100%; float:none;  order: 1; -webkit-order: 1; display:table-header-group;}
+    .widget1.w1-half-swap .w1-col-l .w1-icon     { padding-top:20px }
+    .widget1.w1-half-swap .w1-col-l .w1-content  { padding-top:20px}
+
+    .widget1.w1-swap  { display:table; padding-top:0; padding-bottom:20px; }
+    .widget1.w1-swap .w1-col-l  { width:100%; float:none; order: 2; -webkit-order: 2; padding-left:0; display:table-footer-group; }
+    .widget1.w1-swap .w1-col-r  { width:100%; float:none;  order: 1; -webkit-order: 1; display:table-header-group; }
+    .widget1.w1-swap .w1-col-l .w1-icon     { padding-top:20px }
+    .widget1.w1-swap .w1-col-l .w1-content  { padding-top:20px}
+
+   	}
+
+
+ 	/* • Widget: icon + content + No left photo
+   	------------------------------------------------------------------------- */
+   	.widget1.nophoto 	{ }
+   	.widget1.nophoto .w1-col-l 	{ width:100%; float:left; }
+   	.widget1.nophoto .w1-col-r 	{ display:none }
+
+
+ 	/* • Widget: 3 cols with border
+   	------------------------------------------------------------------------- */
+	div.table3cols 		{ width:100%; text-align:left;}
+	.divTable.table3cols .divTableCell { padding: 10px 10px;}
+
+	.divTable			{ display:table; }
+	.divTableRow		{ display:table-row; }
+	.divTableHeading 	{ display: table-header-group;}
+	.divTableCell		{ display: table-cell; width:33.3%; vertical-align:top;
+							       border: 5px solid #fff;
+	        			box-shadow: inset 0px 0px 0px 1px #42bec2;
+	        			box-sizing: border-box; }
+	.divTableBody { display: table-row-group;}
+
+	div.table3cols img { padding-top:20px}
+
+  @media only screen and (max-width: 667px) {
+	.divTable			{ display:block; }
+	.divTableRow		{ display:block; }
+	.divTableCell		{ display:block; width:100%; }
+  }
+
+
+ 	/* • Widget: 3 cols No border
+   	------------------------------------------------------------------------- */
+	div.table3cols.noborder .divTableCell { border: none;
+	        			box-shadow: none;
+	        			box-sizing:none}
+
+
+	@media only screen and (max-width: 667px) {
+	.divTable.table3cols.noborder .divTableCell { padding: 10px 0;}
+	}
+
+
+ 	/* • Widget: grey box 
+   	------------------------------------------------------------------------- */
+	.general .greyBox   { background-color:#ececec; padding:15px; margin:1% 0 0 0}
+
+  @media only screen and (max-width: 667px) {
+  .general .greyBox   {  padding:10px; margin:10px 0 0 0}
+  }
+
+
+ 	/* • Widget: 2 cols 50% responsive table
+   	------------------------------------------------------------------------- */
+	.general .col2-table-halfRow 			{ display:table; table-layout:fixed; height:100%; width:100%;}
+	.general .col2-table-halfRow .table-col { display:table-cell; float:none; height:100%; padding:0 0 10px 0; vertical-align:top;}
+	.general .col2-table-halfRow .half-col:nth-child(odd)    { width:49%; padding-right:1%} 
+	.general .col2-table-halfRow .half-col:nth-child(even)   { width:49%; padding-left:1%} 
+	.general .col2-table-halfRow .table-col img { margin-bottom:2px}
+
+
+  @media only screen and (max-width: 667px) {
+	.general .col2-table-halfRow { display:block; table-layout:inherit;  height:100%; width:100%;}
+	.general .col2-table-halfRow .table-col { display:block; float:inherit; height:100%; padding:inherit;}
+	.general .col2-table-halfRow .half-col:nth-child(odd)    { width:100%; padding-right:0%; padding-bottom:20px} 
+	.general .col2-table-halfRow .half-col:nth-child(even)   { width:100%; padding-left:0%; padding-bottom:20px;}
+	.general .col2-table-halfRow .table-col img { margin-bottom:8px}
+	}
+
+
+  /* • Table content 70% / photo 30%
+    ------------------------------------------------------------------------- */
+  /* • General template - left content, right photo */
+  .content-left           {}
+  .content-left img       { margin-top:8px}
+  .content-left .cl-left  { width:67%; float:left; padding-right:3%; max-height:999999px} 
+  .content-left .cl-right { width:30%; float:left} 
+
+  /* • General template - left photo, right content */
+  .content-right          {}
+  .content-right img      { margin-top:8px}
+  .content-right .cr-left { width:30%; float:left} 
+  .content-right .cr-right{ width:67%; float:left; padding-left:3%;} 
+
+  @media only screen and (max-width: 667px) {
+  .content-left .cl-left { width:100%; float:left; margin-bottom:20px} 
+  .content-left .cl-right{ width:100%; float:left;} 
+  .content-right .cr-left { width:100%; float:left;  margin-bottom:20px} 
+  .content-right .cr-right{ width:100%; float:left; padding-left:0;} 
+  }
+
+
+  /* • Table content 50% / photo 50%
+  ------------------------------------------------------------------------- */
+  .content-left.half-l {}
+  .content-left.half-l .cl-left  { width:50%; float:left; max-height:999999px; padding-right:0;} 
+  .content-left.half-l .cl-right { width:47%; float:left; padding-left:3%; } 
+
+  .content-right.half-r .cr-left       { width:47%; float:left; padding-right:0; } 
+  .content-right.half-r .cr-right      { width:50%; float:left; padding-left:3%} 
+
+
+  @media only screen and (max-width: 667px) {
+  .content-left.half-l .cl-left   { width:100%; padding-right:0; margin-bottom:20px} 
+  .content-left.half-l .cl-right  { width:100%; padding-left:0; } 
+
+  .content-right.half-r .cr-left  { width:100%; padding-left:0;  margin-bottom:20px} 
+  .content-right.half-r .cr-right { width:100%; float:left; padding-left:0;} 
+
+  }
+
+
+ 	/* • Widget: 6 circle img cols
+   	------------------------------------------------------------------------- */
+	.col6.section 	{ clear:both; padding:0px; margin:0px; line-height:1.4; font-size:15px}
+	.col6 .col 		{ display:block; float:left; margin: 1% 0 1% 2%; text-align:center;}
+	.col6 .col:first-child { margin-left: 0; }
+
+	.col6.group:before,
+	.col6.group:after { content:""; display:table; }
+	.col6.group:after { clear:both;}
+	.col6.group { zoom:1; /* For IE 6/7 */ }
+
+	.col6 .img-blk				{ width:100%; margin-top:10px}
+	.col6 .img-blk .img-circle	{ width:100px; height:100px; border-radius: 50%;}
+	.col6 .txt-blk		{ padding-top:20px}
+
+	.col6 .span_1_of_6 { width: 15%;}
+
+	@media only screen and (max-width: 1200px) {
+	.col6 .span_1_of_6 	{ width:31.33%; margin-top:10px; margin-bottom:40px}		
+	.col6 .col 			{ margin: 1% 0 1% 3%; }
+	.col6 .col:first-child  { margin-left: 0; }
+	.col6 .col:nth-child(4) { margin-left: 0; }
+	}
+
+  @media only screen and (max-width: 667px) {
+	.col6 .col {  margin: 10px 0 10px 0%; }
+	.col6 .span_1_of_6 { width: 100%;}
+
+	.col6 .img-blk				{ width:100px; float:left; }
+	.col6 .txt-blk				{ width:calc(100% - 120px); float:left; text-align:left; padding-top:0; padding-left:20px }
+
+	}
+
+
+  /* • General template - color table style */
+  .general table.gen        { text-align:left; vertical-align:top; margin:1% 0 0 0;}
+  .general table.gen th     { background-color:#454753; padding:1% 2%; color:#fff; text-align:left; vertical-align:top; }
+  .general table.gen tr.even td { background-color:#dbdbdb; padding:1% 2%; border-bottom:1px solid #fff; text-align:left; vertical-align:top; }
+  .general table.gen tr.odd td  { background-color:#e7e7e7; padding:1% 2%; border-bottom:1px solid #fff; text-align:left; vertical-align:top; }
+
+  /* • General template - nude table style */
+  .general table.nude             { text-align:left; vertical-align:top; margin:0}
+  .general table.nude th          { background-color:#fff; padding:0; color:#333; text-align:left; vertical-align:top; }
+  .general table.nude tr.even td  { background-color:#fff; padding:0; border-bottom:1px solid #fff; text-align:left; vertical-align:top; }
+  .general table.nude tr.odd td   { background-color:#fff; padding:0; border-bottom:1px solid #fff; text-align:left; vertical-align:top; }
+
+  /* • General template - Grey box & color box */
+  .general .colorBox h2 { color:#fff!important;}
+  .general .colorBox    { padding:2% 2%;  margin:1% 0 0 0; color:#fff;}
+  .general .colorBox a  { color:#fff; text-decoration:underline;}
+  .general .colorBox a:hover  { color:#333; text-decoration:underline;}
+
+
+
+  /* • General template - ul li */
+  .general ul.common   { margin:0px; padding:10px 0px; text-indent:0; }
+  .general ul.common li  { margin:0px 0px 0px 30px; padding:0; line-height:1.8; list-style-type:disc; background-color:transparent; border-right:none;}
+  .caption { margin-top:10px; line-height:1.6;}
+
+  /* • 2 col responsive table */
+  .general .col2-table-row { display:table; table-layout:fixed; height:100%; width:100%;}
+  .general .col2-table-row .table-col { display:table-cell; float:none; height:100%; padding:10px; border-bottom:1px solid #fff; vertical-align:top;}
+  .general .col2-table-row:nth-child(odd) {background-color:#dbdbdb}
+  .general .col2-table-row:nth-child(even) {background-color:#e7e7e7}
+  .general .col2-table-row .field   { text-transform:uppercase; text-align:right; width:25%;
+                                      background-color:#454753; color:#fff;} 
+  .general .col2-table-row .detail  { width:75%}
+  
+  /* • Video */
+  .videoWrapper           { position:relative; padding-bottom:56.25%; /* 16:9 */ height:0;}
+  .videoWrapper iframe    { position:absolute; top:0; left:0; width:100%; height:100%; }
+
+  .videoWrapper.sm           { position:relative; left:20%; padding-bottom:33.75%; /* 16:9 */ height:0; width:60%;
+                               background-image:url(images/pattern-018.svg); background-repeat:no-repeat;}
+  .videoWrapper.sm iframe    { position:absolute; top:0; left:0; width:100%; height:100%; }
+
+  /* • Image Scale */
+  .general .img-scale70  { width:70%; height:auto;}
+  .general .img-scale60  { width:60%; height:auto;}
+  .general .img-scale50  { width:50%; height:auto;}
+  .general .img-scale40  { width:40%; height:auto;}
+
+
+  @media only screen and (max-width: 1024px) {
+  .general .img-scale70,
+  .general .img-scale60,
+  .general .img-scale50,
+  .general .img-scale40  { width:100%; height:auto;}
+  .videoWrapper.sm           { left:0%; padding-bottom:56.25%; /* 16:9 */ width:100%; }
+
+  }
+
+  @media only screen and (max-width: 667px) {
+  .general ul   { text-indent:inherit; padding-left:20px}
+  .general ul li  { margin:0; padding:0; line-height:1.8; list-style-type:disc;}
+  .general ul li:before  { content: ""; color:inherit; padding-right:0;}
+
+  .general .colorBox  { padding:5%;  margin:1% 0 0 0; color:#fff;}
+
+  }

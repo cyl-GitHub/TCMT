@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colin.mapper.ExpertMapper">
+
+    <resultMap id="expertMap" type="com.colin.bean.Expert">
+        <result column="expert_id" property="expertId"/>
+        <result column="expert_name" property="expertName"/>
+        <result column="expert_address" property="expertAddress"/>
+        <result column="expert_excel" property="expertExcel"/>
+        <result column="expert_telephone" property="expertTelephone"/>
+        <result column="expert_examine" property="examine"/>
+    </resultMap>
+    <insert id="insertExpert">
+        insert into expert(expert_id,expert_name,expert_address,expert_excel,expert_telephone)
+        values(#{expertId},#{expertName},#{expertAddress},#{expertExcel},#{expertTelephone})
+    </insert>
+
+    <select id="selectExpert" resultMap="expertMap">
+        select expert_id,expert_name,expert_address,expert_excel,expert_telephone,expert_examine
+        from  expert where expert_id = #{expertId}
+    </select>
+    <select id="selectCount" resultType="java.lang.Integer">
+        select count(*) from expert;
+
+    </select>
+    <select id="selectAllExpert" resultMap="expertMap">
+         select expert_id,expert_name,expert_address,expert_excel,expert_telephone,expert_examine
+         from expert;
+    </select>
+
+</mapper>

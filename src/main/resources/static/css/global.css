@@ -1,0 +1,359 @@
+
+html, q
+p, h1, h2, h3, h4, h5, h6, figure {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    vertical-align: baseline
+}
+
+html, body {
+    margin: 0 auto;
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+    color: #666;
+    background-color: #e2e7ed
+}
+
+input, textarea, select {
+    padding: 0;
+    margin: 0;
+    moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px
+}
+
+div {
+    position: relative;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+
+a:visited {
+    text-decoration: none;
+    outline: 0;
+}
+
+a:active {
+    text-decoration: none;
+    outline: 0;
+}
+
+a:hover {
+    color: #42bec2;
+    text-decoration: none;
+    outline: 0;
+}
+
+a:focus {
+    -moz-outline-style: none;
+}
+
+img {
+    border: 0;
+}
+
+.img-scale {
+    width: 100%;
+    height: auto;
+}
+
+.clear {
+    clear: both;
+}
+
+.float-l {
+    float: left;
+}
+
+.float-r {
+    float: right;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.txt-l {
+    text-align: left;
+}
+
+.txt-r {
+    text-align: right;
+}
+
+/* • Common Style
+---------------------------------------------------------------------------- */
+
+.bg-white {
+    background-color: #fff
+}
+
+.bg-gray-light {
+    background-color: #ececec
+}
+
+.txt-white {
+    color: #fff;
+}
+
+.txt-turquoise,
+header nav a.top.current-item,
+header nav a.top:hover,
+#body.cn h3,
+#body.en h3,
+.theme-color,
+ul.sub li.sub-current {
+    color: #42bec2;
+}
+
+.bg-turquoise,
+.sub-menu li a:hover, .sub-menu .current-item a,
+.pushy-submenu .level2,
+.pushy-submenu ul.level2 li,
+.general .colorBox {
+    background: #42bec2;
+}
+
+/* • Page content container
+---------------------------------------------------------------------------- */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.container.page-top-pos {
+    margin-top: 150px
+}
+
+
+.container-padding {
+    padding: 0 10%; /*@20180201@ padding:0 50px*/
+}
+
+.pg-container {
+    padding-top: 20px;
+}
+
+.pg-container .pg-col-l {
+    width: 20%;
+    float: left;
+    margin-bottom: 50px;
+}
+
+.pg-container .pg-col-r {
+    width: calc(80% - 110px);
+    float: left;
+    margin-left: 10px;
+    padding: 50px 50px;
+    background-color: #fff;
+    margin-bottom: 50px
+}
+
+#breadcrumb {
+    padding: 10px 0 10px 20%;
+    min-height: 20px;
+}
+
+#breadcrumb nav {
+    padding-left: 10px;
+}
+
+#breadcrumb > *:first-child {
+    margin-left: 0px;
+}
+
+#langsel {
+    padding: 5px;
+    border-radius: 13px;
+    outline: none;
+    background: #fff;
+}
+
+#langsel option {
+    padding: 2px 0;
+}
+
+.sp-container {
+    margin-top: 10px
+}
+
+@media only screen and (max-width: 1024px) {
+    .container {
+        max-width: inherit;
+        width: 100%;
+    }
+
+    .container.page-top-pos {
+        margin-top: 100px
+    }
+
+    .container-padding {
+        padding: 0 25px
+    }
+
+    .pg-container {
+        padding-top: 30px;
+    }
+
+    .pg-container .pg-col-l {
+        display: none;
+    }
+
+    .pg-container .pg-col-r {
+        width: calc(100% - 60px);
+        padding: 30px 30px;
+        margin-left: 0
+    }
+
+    #breadcrumb {
+        padding: 10px 0 10px 0;
+        min-height: 20px;
+    }
+
+    #breadcrumb nav {
+        padding-left: 0px;
+    }
+}
+
+@media only screen and (max-width: 667px) {
+    #breadcrumb {
+        display: none;
+    }
+
+    .container.page-top-pos {
+        margin-top: 65px
+    }
+
+    .container-padding {
+        padding: 0 15px
+    }
+
+    .pg-container {
+        padding-top: 15px;
+    }
+
+    .pg-container .pg-col-r {
+        width: calc(100% - 40px);
+        padding: 20px 20px;
+        margin-left: 0;
+        margin-bottom: 20px
+    }
+}
+
+/* • Page square
+---------------------------------------------------------------------------- */
+.square {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 52px;
+    left: 0;
+    text-align: center;
+    background: rgba(244, 151, 121, 1);
+    background: -moz-linear-gradient(top, rgba(244, 151, 121, 1) 0%, rgba(248, 169, 83, 1) 59%, rgba(248, 169, 83, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(244, 151, 121, 1)), color-stop(59%, rgba(248, 169, 83, 1)), color-stop(100%, rgba(248, 169, 83, 1)));
+    background: -webkit-linear-gradient(top, rgba(244, 151, 121, 1) 0%, rgba(248, 169, 83, 1) 59%, rgba(248, 169, 83, 1) 100%);
+    background: -o-linear-gradient(top, rgba(244, 151, 121, 1) 0%, rgba(248, 169, 83, 1) 59%, rgba(248, 169, 83, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(244, 151, 121, 1) 0%, rgba(248, 169, 83, 1) 59%, rgba(248, 169, 83, 1) 100%);
+    background: linear-gradient(to bottom, rgba(244, 151, 121, 1) 0%, rgba(248, 169, 83, 1) 59%, rgba(248, 169, 83, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f49779', endColorstr='#f8a953', GradientType=0);
+}
+
+.square img {
+    width: 100%;
+    height: auto;
+}
+
+/* • inside page left nav
+---------------------------------------------------------------------------- */
+ul.nav-left {
+    padding: 0;
+    margin: 0
+}
+
+ul.nav-left li {
+    background: #bcbcbc url(images/icon-arrow.svg) no-repeat;
+    background-position: 95% center;
+    color: #fff;
+}
+
+ul.sub {
+    padding: 0;
+    margin: 0
+}
+
+ul.sub li {
+    background-color: #fff;
+    color: #666;
+    background-image: none;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+ul.sub li:hover {
+    background-color: #ececec;
+}
+
+ul.nav-left .current {
+    background: #42bec2 url(images/icon-arrowdown.svg) no-repeat;
+    background-position: 95% center
+}
+
+ul.nav-left li,
+ul.sub li {
+    padding: 8px 40px 8px 20px;
+    margin: 0 0 1px 0;
+    display: block;
+}
+
+ul.sub li:hover.sub-current {
+    background-color: #fff;
+    cursor: default;
+}
+
+ul.nav-left li.level2-d {
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+ul.nav-left li.level2-d:hover {
+    background-color: #42bec2;
+}
+
+ul.nav-left ul.sub {
+    display: none;
+}
+
+ul.nav-left ul.sub.open {
+    display: block;
+}
+
+/* ==========================================================================
+    Media Style
+============================================================================= */
+@media only screen and (max-width: 1400px) {
+    footer .f-main-content {
+        padding-right: 40px;
+        padding-left: 95px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .square {
+        width: 30px;
+        height: 30px;
+        top: 0px;
+    }
+}
+
+@media only screen and (max-width: 667px) {
+    .square {
+        display: none
+    }
+}

@@ -1,0 +1,282 @@
+/*全局样式*/
+body {
+    margin: 0px;
+    padding: 0px;
+    font: 12px/1.5 "microsoft yahei", Tahoma, "Arial", "sans-serif";
+    color: #313131
+}
+
+div {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.center{
+    text-align: center;
+}
+
+.div1 {
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+
+/*首页面背景*/
+.allpage {
+    background-color: lightblue;
+    background-size: 100% 1170px;
+    min-height: 1170px;
+}
+
+.caption{
+    height: 100px;
+    font-family: 华文彩云;
+    font-size: 80px;
+    display: -moz-box;/*兼容Firefox*/
+    display: -webkit-box;/*兼容FSafari、Chrome*/
+
+    -moz-box-align: center;/*兼容Firefox*/
+    -webkit-box-align: center;/*兼容FSafari、Chrome */
+
+    -moz-box-pack: center;/*兼容Firefox*/
+    -webkit-box-pack: center;/*兼容FSafari、Chrome */
+
+}
+
+/*页首*/
+.w1000 {
+    width: 100%;
+    margin: 0px auto;
+}
+
+
+
+.header {
+    height: 23%;
+}
+
+/*页首横向标*/
+.tc {
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    background-color: #2aabd2;
+}
+
+
+
+
+
+.nav {
+    width: 11%;
+    height: 150px;
+}
+
+.nav dt {
+    color: #e5e5e5;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 30px;
+    height: 30px;
+    text-shadow: #000 2px 0 1px, #000 0 2px 1px, #000 -2px 0 1px, #000 0 -2px 1px;
+}
+
+/*.nav dd {*/
+    /*text-align: center;*/
+    /*color: #e5e5e5;*/
+    /*position: relative;*/
+
+    /*margin-left: 0px;*/
+    /*overflow: hidden;*/
+    /*text-shadow: #000 1px 0 0, #000 0 1px 0, #000 -1px 0 0, #000 0 -1px 0;*/
+/*}*/
+
+.nav a {
+    color: #e5e5e5;
+}
+
+.w200 {
+    width: 200px;
+}
+
+.w320 {
+    width: 320px;
+}
+
+.ml60 {
+    margin-left: 5%;
+}
+
+.ml10 {
+    margin-left: 1%;
+}
+
+
+
+/*官网首页*/
+.fl {
+    float: left;
+}
+
+.n-home {
+    background-position: 0 0;
+}
+
+/*医疗方式*/
+.w600 {
+    width: 800px;
+    margin: 0px auto;
+}
+
+.way {
+    height: 200px;
+    position: relative;
+    left: 200px;
+}
+.ml30 {
+    margin-left: 30px
+}
+.ml120 {
+    margin-left: 120px
+}
+.way div {
+    width: 210px;
+    height: 180px;
+    background-size: 210px 140px;
+    float: left;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: end;
+    /*display: -moz-box;!*兼容Firefox*!*/
+    /*display: -webkit-box;!*兼容FSafari、Chrome*!*/
+
+    /*-moz-box-align: center;!*兼容Firefox*!*/
+    /*-webkit-box-align: center;!*兼容FSafari、Chrome *!*/
+
+    /*-moz-box-pack: center;!*兼容Firefox*!*/
+    /*-webkit-box-pack: center;!*兼容FSafari、Chrome *!*/
+
+}
+.way p{
+    width: 210px;
+    height: 30px;
+    position:relative;
+    top: 140px;
+    text-align: center;
+    padding:0px;
+    margin:0px
+}
+.way a {
+    text-decoration: none;
+    color: saddlebrown;
+}
+
+.way-img1 {
+    background: url("../img/imghomepage/0AD68DE8-8D8F-40AB-BB9A-DA1035A6E6FB.png") no-repeat;
+}
+
+.way-img2 {
+    background: url("../img/imghomepage/7646958B-D05C-4D6E-A9A9-FC556AA981B7.png") no-repeat;
+}
+
+.way-img3 {
+    background: url("../img/imghomepage/E860F7A4-FE5F-4CF3-9682-A0D7E920A993.png") no-repeat;
+}
+
+.way-img4 {
+    background: url("../img/imghomepage/A0F28894-3AF4-44D0-8677-F9F1ACA1AB93.png") no-repeat;
+}
+
+.login {
+    position: relative;
+    left: 200px;
+    padding-top: 1px;
+    width: 300px;
+    height: 100px;
+    background-color: whitesmoke;
+    background-color: rgba(255, 251, 240, 0.7);
+}
+
+#User{
+    display: inline;
+}
+#User1{
+    display: inline;
+}
+#Password{
+    display: inline;
+    margin-right: 3px;
+}
+#Password1{
+    display: inline;
+}
+
+
+.partall {
+    float: left;
+    width: 600px;
+    height: 500px;
+    position: relative;
+    left: 200px;
+   top: 60px;
+}
+
+.part1 {
+    width: 600px;
+    height: 250px;
+    background-color: dodgerblue;
+}
+
+.part2 {
+    width: 600px;
+    height: 250px;
+    background-color: papayawhip;
+}
+
+.hospital {
+    float: left;
+    width: 400px;
+    height: 650px;
+    position: relative;
+    left: 400px;
+    bottom: 90px;
+    background-color: #2b542c;
+}
+
+.hospital1 {
+    width: 340px;
+    height: 140px;
+    background-color: red;
+    margin-left: 30px;
+    margin-top: 24px;
+}
+
+.hospital2 {
+    width: 340px;
+    height: 140px;
+    background-color: red;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.hospital3 {
+    width: 340px;
+    height: 140px;
+    background-color: red;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.hospital4 {
+    width: 340px;
+    height: 140px;
+    background-color: red;
+    margin-left: 30px;
+    margin-top: 10px;
+}
