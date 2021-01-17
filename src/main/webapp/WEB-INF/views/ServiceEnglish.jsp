@@ -294,10 +294,10 @@
                                 <a href="/jspController/CostEnglish" class="top">Cost</a>
                             </li>
 
-                            <li class="top-nav">
-                                <%--线上咨询--%>
-                                <a href="#" class="top ">Consultation</a>
-                            </li>
+                            <%--<li class="top-nav">--%>
+                                <%--&lt;%&ndash;线上咨询&ndash;%&gt;--%>
+                                <%--<a href="#" class="top ">Consultation</a>--%>
+                            <%--</li>--%>
 
                             <li class="language" style="opacity:0">
                                 <a class="top" style="border-left:none; opacity:0">NUL</a>
