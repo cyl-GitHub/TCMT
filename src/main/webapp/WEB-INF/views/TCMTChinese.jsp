@@ -42,9 +42,9 @@
                 <a href="/jspController/CostChinese">
                     <li><img src="/static/img/imgpage1/8ee19c1d1c5bd2bac23faabe96415bd.jpg" alt="">收费</li>
                 </a>
-                <a href="#">
-                    <li><img src="/static/img/imgpage1/63bbce821d42bd20717d3b21d67f42d.jpg" alt="">咨询</li>
-                </a>
+                <%--<a href="#">--%>
+                    <%--<li><img src="/static/img/imgpage1/63bbce821d42bd20717d3b21d67f42d.jpg" alt="">咨询</li>--%>
+                <%--</a>--%>
 
 
             </ul>

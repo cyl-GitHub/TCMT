@@ -290,9 +290,9 @@
                                 <a href="/jspController/CostChinese" class="top">收费标准</a>
                             </li>
 
-                            <li class="top-nav">
-                                <a href="#" class="top ">线上咨询</a>
-                            </li>
+                            <%--<li class="top-nav">--%>
+                                <%--<a href="#" class="top ">线上咨询</a>--%>
+                            <%--</li>--%>
 
                             <li class="language" style="opacity:0">
                                 <a class="top" style="border-left:none; opacity:0">NUL</a>

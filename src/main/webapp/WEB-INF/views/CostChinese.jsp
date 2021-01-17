@@ -229,7 +229,6 @@
     <script src="/static/js/custom.js"></script>
     <script src="/static/js/lightgallery-all.min.js"></script>
     <script src="/static/js/wphotolist.js"></script>
-
     <script type="text/javascript">
         // IE 8 or older
         if ((document.all && !document.querySelector) || (document.all && document.querySelector && !document.addEventListener)) {
@@ -255,7 +254,6 @@
             leftmenuec();
         });
     </script>
-
 </head>
 <body id="body" class="cn ">
 <div id="top"></div>
@@ -288,9 +286,9 @@
                                 <a href="/jspController/CostChinese" class="top   current-item">收费标准</a>
                             </li>
 
-                            <li class="top-nav">
-                                <a href="#" class="top ">线上咨询</a>
-                            </li>
+                            <%--<li class="top-nav">--%>
+                                <%--<a href="#" class="top ">线上咨询</a>--%>
+                            <%--</li>--%>
 
                             <li class="language" style="opacity:0">
                                 <a class="top" style="border-left:none; opacity:0">NUL</a>
