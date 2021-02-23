@@ -291,7 +291,7 @@
                             </li>
 
                             <li class="top-nav">
-                                <a href="#" class="top ">线上咨询</a>
+                                <a href="/jspController/Consultation" class="top ">线上咨询</a>
                             </li>
 
                             <li class="language" style="opacity:0">
@@ -331,13 +331,13 @@
                     医养服务
                 </li>
 
-                <li class="level2-d" onclick="goUrl('/jspController/ExpertRegisterChinese');">
-                    医生加盟
-                </li>
+                <%--<li class="level2-d" onclick="goUrl('/jspController/ExpertRegisterChinese');">--%>
+                    <%--医生加盟--%>
+                <%--</li>--%>
 
-                <li class="level2-d" onclick="goUrl('/jspController/UserLoginChinese');">
-                    用户信息
-                </li>
+                <%--<li class="level2-d" onclick="goUrl('/jspController/UserLoginChinese');">--%>
+                    <%--用户信息--%>
+                <%--</li>--%>
 
             </ul>
         </div>

@@ -172,7 +172,7 @@
 
                             <li class="top-nav">
                                 <%--线上咨询--%>
-                                <a href="#" class="top ">Consultation</a>
+                                <a href="/jspController/Consultation" class="top ">Consultation</a>
                             </li>
 
                             <li class="language" style="opacity:0">
@@ -212,13 +212,13 @@
                     Medical services
                 </li>
 
-                <li class="level2-d" onclick="goUrl('/jspController/ExpertRegisterEnglish');">
-                    Doctors joining
-                </li>
+                <%--<li class="level2-d" onclick="goUrl('/jspController/ExpertRegisterEnglish');">--%>
+                    <%--Doctors joining--%>
+                <%--</li>--%>
 
-                <li class="level2-d" onclick="goUrl('/jspController/UserLoginEnglish');">
-                    User login
-                </li>
+                <%--<li class="level2-d" onclick="goUrl('/jspController/UserLoginEnglish');">--%>
+                    <%--User login--%>
+                <%--</li>--%>
 
             </ul>
         </div>

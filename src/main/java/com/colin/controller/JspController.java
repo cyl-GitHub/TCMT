@@ -106,4 +106,9 @@ public class JspController {
     }
 
 
+    @RequestMapping(value = "Consultation")
+    public String Consultation() {
+        return "Consultation";
+    }
+
 }
