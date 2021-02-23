@@ -12,9 +12,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TCMT在线咨询</title>
+    <script src="/static/js/xechat.js"></script>
     <link rel="stylesheet" type="text/css"
-          href="./css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./css/style.css?v=1.2">
+          href="/static/css/bootstrap.min1.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body >
@@ -23,7 +24,7 @@
     <div class="login_fm">
         <form>
             <div class="login_avatar dropdown">
-                <img src="./images/avatar/0.jpeg" id="avatarList" data-toggle="dropdown"/>
+                <img src="/static/images/avatar/0.jpeg" id="avatarList" data-toggle="dropdown"/>
                 <div class="dropdown-menu avatar_list_div" aria-labelledby="avatarList">
                 </div>
             </div>
@@ -91,7 +92,7 @@
     <input type="file" style="display: none" id="file" onchange="sendImage()"/>
 </div>
 
-<audio id="beep" src="/sounds/qq.mp3"></audio>
-<script type="text/javascript" src="/js/xechat.js?v=1.2"></script>
+<audio id="beep" src="/static/sounds/qq.mp3"></audio>
+
 </body>
 </html>
