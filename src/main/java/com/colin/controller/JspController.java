@@ -105,5 +105,10 @@ public class JspController {
         return "admin/Administration1";
     }
 
+    //对话框
+    @RequestMapping(value = "Consultation")
+    public String Consultation(){
+        return "Consultation";
+    }
 
 }
