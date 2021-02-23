@@ -14,7 +14,7 @@
     <title>TCMT在线咨询</title>
     <script src="/static/js/xechat.js"></script>
     <link rel="stylesheet" type="text/css"
-          href="/static/css/bootstrap.min1.css">
+          href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
@@ -52,7 +52,7 @@
         <a href="#panel-left" data-iconpos="notext"
            class="col-xs-2 text-right"> </a> <a class="text-center col-xs-8"
                                                 target="_blank">聊天室（<font color="orange" id="online_num"><img
-            src="./images/loader.gif" width="15" height="15"></font>）</a>
+            src="/static/images/loader.gif" width="15" height="15"></font>）</a>
         <div class="dropdown settings">
             <i class="glyphicon glyphicon-cog dropdown-toggle" id="settings" data-toggle="dropdown"></i>
             <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="settings" id="settings-menu">

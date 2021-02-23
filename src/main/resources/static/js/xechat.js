@@ -163,7 +163,7 @@ function sendMessage(pub, header, data) {
  */
 function showHeadPortrait() {
     for (var i = 0; i < head_num; i++) {
-        $('.avatar_list_div').append('<img src=./images/avatar/' + i + '.jpeg />');
+        $('.avatar_list_div').append('<img src=/static/images/avatar/' + i + '.jpeg />');
     }
     $('.avatar_list_div img').bind('click', function () {
         $('#avatarList').attr('src', $(this).attr('src'));
