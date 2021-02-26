@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-<body >
+<body>
 <div id="login" style="display: none">
     <div><h3 class="text-center">TCMT咨询登录</h3></div>
     <div class="login_fm">
@@ -43,16 +43,17 @@
 <div data-role="page" id="showChat" style="display: inline;height: 100%">
     <div class="header linear-g fixed_">
 
-        <div class="dropdown user-list" >
-            <i class="glyphicon glyphicon-list dropdown-toggle" id="userList"  data-toggle="dropdown"></i>
+        <div class="dropdown user-list">
+            <i class="glyphicon glyphicon-list dropdown-toggle" id="userList" data-toggle="dropdown"></i>
             <ul class="dropdown-menu" role="menu" aria-labelledby="userList" id="onlineUserList">
             </ul>
         </div>
 
         <a href="#panel-left" data-iconpos="notext"
            class="col-xs-2 text-right"> </a> <a class="text-center col-xs-8"
-                                                target="_blank">聊天室（<font color="orange" id="online_num"><img
-            src="/static/images/loader.gif" width="15" height="15"></font>）</a>
+                                                target="_blank">咨询服务
+        <%--（<font color="orange" id="online_num"><img src="/static/images/loader.gif" width="15" height="15"></font>）--%>
+    </a>
         <div class="dropdown settings">
             <i class="glyphicon glyphicon-cog dropdown-toggle" id="settings" data-toggle="dropdown"></i>
             <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="settings" id="settings-menu">
@@ -72,6 +73,33 @@
     <div data-role="content" class="container content" role="main">
         <div style="height: 100%">
             <ul class="content-reply-box mg10" id="show_content">
+                <li class="odd">
+                    <a class="user">
+                        <img class="img-responsive avatar_" src="/static/images/avatar/robot.jpeg">
+                        <span class="user-name">客服</span></a>
+                    <div class="reply-content-box">
+                        <span class="reply-time">
+                            <i class="glyphicon glyphicon-time"></i> 2021/02/26 09:40</span>
+                        <div class="reply-content pr">
+                            <span class="arrow">&nbsp;</span>
+                            欢迎来到TCMT！请问您有什么问题呢?
+                        </div>
+                    </div>
+                </li>
+                <li class="even"  data-receiver="null">
+                    <a class="user">
+                        <img class="img-responsive avatar_" src="/static/images/avatar/0.jpeg">
+                        <span class="user-name">12</span>
+                    </a>
+                    <div class="reply-content-box">
+                        <span class="reply-time">
+                            <i class="glyphicon glyphicon-time">
+                            </i> 2021/02/26 09:45&nbsp;
+                        </span>
+                        <div class="reply-content pr" ondblclick="revokeMessage(this)"><span class="arrow">&nbsp;</span>12
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
