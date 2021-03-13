@@ -12,9 +12,9 @@ import lombok.ToString;
 public class Message {
 
     /**
-     * 用户信息
+     * 发送者信息
      */
-    private User user;
+    private User userSend;
     /**
      * 消息
      */
@@ -31,6 +31,11 @@ public class Message {
      * 发送时间
      */
     private String sendTime;
+
+    /**
+     * 接受者信息
+     */
+    private User userReceive;
 
 
 }

@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Data
 public class User {
+    private String id;
     private String name;//用户名
     private String email;//email
     private String telephone;

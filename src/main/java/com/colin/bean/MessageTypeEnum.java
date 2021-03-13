@@ -6,6 +6,5 @@ package com.colin.bean;
 public enum MessageTypeEnum {
     SYSTEM,
     USER,
-    REVOKE,
-    ROBOT
+    REVOKE
 }
