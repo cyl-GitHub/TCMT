@@ -266,7 +266,8 @@
             <div id="menu-m" class="menu-btn">
                 <i class="fa fa-bars pos-menu txt-green-light"></i>
             </div>
-            <div id="logo" onclick="goUrl('/sc/index.html');">
+            <%--onclick="goUrl('/sc/index.html');"--%>
+            <div id="logo">
                 <img src="/static/img/imghomepage/timg.jpg" alt="TCMT" style="width:50%; height:60%;">
             </div>
             <div class="right-blk">
@@ -332,11 +333,11 @@
                 </li>
 
                 <%--<li class="level2-d" onclick="goUrl('/jspController/ExpertRegisterChinese');">--%>
-                    <%--医生加盟--%>
+                <%--医生加盟--%>
                 <%--</li>--%>
 
                 <%--<li class="level2-d" onclick="goUrl('/jspController/UserLoginChinese');">--%>
-                    <%--用户信息--%>
+                <%--用户信息--%>
                 <%--</li>--%>
 
             </ul>
