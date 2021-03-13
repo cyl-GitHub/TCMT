@@ -216,10 +216,11 @@ function sendToChatRoom() {
         contentType: "application/json;charset=utf-8",
         //向后端传输的数据
         data: JSON.stringify({
-            id: $("#id").val(),
-            name: $("#name").val(),
-            password: $("#password").val(),
-            code: $("#code").val()
+            userSendId: $("#userSendId").val(),
+            message: content,
+            image: "",
+            sendTime: "",
+            userReceiveId:$("#adminId").val()
         }),
         //处理后端返回的数据
         success: function (data) {

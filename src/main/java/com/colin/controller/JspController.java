@@ -14,7 +14,7 @@ public class JspController {
     //主页
     @RequestMapping(value = "homepageChinese")
     public String homepageChinese( HttpSession session) {
-        Map<String, String> admin = new HashMap<>();
+        HashMap<String, String> admin = new HashMap<>();
 
         admin.put("1", "等待中");
 

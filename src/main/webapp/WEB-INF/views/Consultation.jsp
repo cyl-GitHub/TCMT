@@ -48,7 +48,7 @@
         <a href="#panel-left" data-iconpos="notext"
            class="col-xs-2 text-right"> </a> <a class="text-center col-xs-8"
                                                 target="_blank">咨询服务
-        <%--（<font color="orange" id="online_num"><img src="/static/images/loader.gif" width="15" height="15"></font>）--%>
+        （<font color="orange" id="adminId">23215</font>）
     </a>
         <div class="dropdown settings">
             <i class="glyphicon glyphicon-cog dropdown-toggle" id="settings" data-toggle="dropdown"></i>
