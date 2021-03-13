@@ -173,7 +173,7 @@
 
                             <li class="top-nav">
                                 <%--线上咨询--%>
-                                <a href="/jspController/Consultation" class="top ">Consultation</a>
+                                <a href="/consultationController/Consultation" class="top ">Consultation</a>
                             </li>
 
                             <li class="language" style="opacity:0">

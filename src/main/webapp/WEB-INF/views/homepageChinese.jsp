@@ -292,7 +292,7 @@
                             </li>
 
                             <li class="top-nav">
-                                <a href="/jspController/Consultation" class="top ">线上咨询</a>
+                                <a href="/consultationController/Consultation" class="top ">线上咨询</a>
                             </li>
 
                             <li class="language" style="opacity:0">

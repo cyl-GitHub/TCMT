@@ -3,13 +3,24 @@ package com.colin.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 @RequestMapping(value = "jspController")
 public class JspController {
 
     //主页
     @RequestMapping(value = "homepageChinese")
-    public String homepageChinese() {
+    public String homepageChinese( HttpSession session) {
+        Map<String, String> admin = new HashMap<>();
+
+        admin.put("1", "等待中");
+
+        session.setAttribute("admin", admin);
+
+
         return "homepageChinese";
     }
 
@@ -104,11 +115,4 @@ public class JspController {
     public String Administration1() {
         return "admin/Administration1";
     }
-
-    //信息咨询
-    @RequestMapping(value = "Consultation")
-    public String Consultation() {
-        return "Consultation";
-    }
-
 }
