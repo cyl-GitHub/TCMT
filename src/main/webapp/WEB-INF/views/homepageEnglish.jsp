@@ -241,7 +241,8 @@
                     <div class="widget riche">Tcmt is committed to creating a one-stop TCM service of "medical treatment, accompany and tourism" for patients. We adopt a comprehensive escort service system to create a 24-hour online service, care service and tour guide service for institutions in terms of medical treatment, accompany, tourism and translation.
 
                         <br>&nbsp;<br>
-                        <img class="img-scale70" src="/static/img/imghomepage/ms_chart.jpg" alt="医养服务体系"></div>
+                        <%--<img class="img-scale70" src="/static/img/imghomepage/ms_chart.jpg" alt="医养服务体系">--%>
+                    </div>
                     <div class="clear hwsep"></div>
                     <div class="widget clear" style="height:30px;"></div>
                     <div class="clear hwsep"></div>

@@ -363,7 +363,8 @@
                         <span class="theme-color">看病,陪护,旅游,翻译</span>
                         等方面，打造包含——机构24小时在线服务、照料服务、导游服务。
                         <br>&nbsp;<br>
-                        <img class="img-scale70" src="/static/img/imghomepage/ms_chart.jpg" alt="医养服务体系"></div>
+                        <%--<img class="img-scale70" src="/static/img/imghomepage/ms_chart.jpg" alt="医养服务体系">--%>
+                    </div>
                     <div class="clear hwsep"></div>
                     <div class="widget clear" style="height:30px;"></div>
                     <div class="clear hwsep"></div>
