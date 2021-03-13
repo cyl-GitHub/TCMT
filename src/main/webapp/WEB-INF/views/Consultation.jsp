@@ -41,13 +41,9 @@
 </div>
 
 <div data-role="page" id="showChat" style="display: inline;height: 100%">
-    <div class="header linear-g fixed_">
 
-        <div class="dropdown user-list">
-            <i class="glyphicon glyphicon-list dropdown-toggle" id="userList" data-toggle="dropdown"></i>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="userList" id="onlineUserList">
-            </ul>
-        </div>
+    <%--todo 上部功能栏--%>
+    <div class="header linear-g fixed_">
 
         <a href="#panel-left" data-iconpos="notext"
            class="col-xs-2 text-right"> </a> <a class="text-center col-xs-8"
@@ -70,6 +66,8 @@
         </div>
     </div>
     <div class="header"></div>
+
+    <%--todo 聊天内容框--%>
     <div data-role="content" class="container content" role="main">
         <div style="height: 100%">
             <ul class="content-reply-box mg10" id="show_content">
@@ -86,7 +84,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="even"  data-receiver="null">
+                <li class="even" data-receiver="null">
                     <a class="user">
                         <img class="img-responsive avatar_" src="/static/images/avatar/0.jpeg">
                         <span class="user-name">12</span>
@@ -103,16 +101,19 @@
             </ul>
         </div>
     </div>
+
+
+    <%--todo 输入文字--%>
     <div class="send_div">
-        <div class="toUserList">
-            <ul>
-            </ul>
-        </div>
+
         <div class="input-group div_left">
+
             <textarea rows="20" maxlength="200" placeholder="请在此处输入要发送的信息！" class="form-control"
                       id="content" onkeyup="changeBtn()"></textarea>
+
             <span id="picture_btn" onclick="selectFile()" class="input-group-addon linear-g right_btn glyphicon
              glyphicon-picture"></span>
+
             <span id="send_btn" onclick="sendToChatRoom()" class="input-group-addon linear-g right_btn glyphicon
              glyphicon-send" style="display: none;"></span>
         </div>

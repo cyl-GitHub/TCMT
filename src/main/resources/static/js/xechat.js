@@ -293,7 +293,7 @@ function createUser() {
 }
 
 /**
- * 显示用户消息
+ * 显示用户消息  有用 需要改
  * @param data
  */
 function showUserMsg(data) {
@@ -322,11 +322,12 @@ function showUserMsg(data) {
 }
 
 /**
- * 跳到聊天界面最底下
+ * 跳到聊天界面最底下  有用
  */
 function jumpToLow() {
-    $("ul").scrollTop($("ul")[2].scrollHeight);
+    $("ul").scrollTop($("ul")[1].scrollHeight);
 }
+
 
 /**
  * 处理消息
