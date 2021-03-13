@@ -14,7 +14,7 @@ public class Message {
     /**
      * 发送者信息
      */
-    private User userSend;
+    private Integer userSendId;
     /**
      * 消息
      */
@@ -24,10 +24,6 @@ public class Message {
      */
     private String image;
     /**
-     * 消息类型
-     */
-    private MessageTypeEnum type;
-    /**
      * 发送时间
      */
     private String sendTime;
@@ -35,7 +31,6 @@ public class Message {
     /**
      * 接受者信息
      */
-    private User userReceive;
-
+    private Integer userReceiveId;
 
 }

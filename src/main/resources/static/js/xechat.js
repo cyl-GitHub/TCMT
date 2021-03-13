@@ -181,33 +181,81 @@ function sendToChatRoom() {
         return;
     }
 
-    showToUserList(content);
+    // showToUserList(content);
+    //
+    // var toUser = [uid];
+    // var names = content.split('@');
+    //
+    // for (var i = 1; i < names.length; i++) {
+    //     var index = names[i].indexOf(' ');
+    //     var userId = getUserIdByName(names[i].substr(0, index != -1 ? index : names[i].length));
+    //     // userId不能是空的，且toUser数组中不存在该userId
+    //     if (userId !== undefined && userId !== '' && toUser.indexOf(userId) == -1) {
+    //         toUser.push(userId);
+    //     }
+    // }
+    //
+    // var data = {
+    //     "message": content
+    // };
+    //
+    // var pub = '/chatRoom';
+    // if (toUser.length > 1) {
+    //     pub = '/chat';
+    //     data.receiver = toUser;
+    // }
+    //
+    // data = JSON.stringify(data);
+    //
+    // sendMessage(pub, {}, data);
 
-    var toUser = [uid];
-    var names = content.split('@');
 
-    for (var i = 1; i < names.length; i++) {
-        var index = names[i].indexOf(' ');
-        var userId = getUserIdByName(names[i].substr(0, index != -1 ? index : names[i].length));
-        // userId不能是空的，且toUser数组中不存在该userId
-        if (userId !== undefined && userId !== '' && toUser.indexOf(userId) == -1) {
-            toUser.push(userId);
+    $.ajax({
+        url: "/consultationController/userSend", dataType: "json",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        //向后端传输的数据
+        data: JSON.stringify({
+            id: $("#id").val(),
+            name: $("#name").val(),
+            password: $("#password").val(),
+            code: $("#code").val()
+        }),
+        //处理后端返回的数据
+        success: function (data) {
+            if (data.result == "success") {
+                window.location.href = "/user/userTotalPage";
+            } else if (data.result == "用户信息错误") {
+                changeImg();
+                $("#divId").html("");
+                $("#divAll").html("");
+                $("#divUser").html(data.result);
+            } else if (data.result == "验证码错误") {
+                changeImg();
+                $("#divUser").html("");
+                $("#divId").html("");
+                $("#divAll").html(data.result);
+            } else if (data.result == "身份证号格式错误") {
+                changeImg();
+                $("#divAll").html("");
+                $("#divUser").html("");
+                $("#divId").html(data.result);
+            } else {
+                changeImg();
+                $("#divUser").html("");
+                $("#divId").html("");
+                $("#divAll").html(data.result);
+            }
+        },
+        //处理失败返回的数据
+        error: function (data) {
+            changeImg();
+            $("#divAll").html(data.result);
         }
-    }
+    })
 
-    var data = {
-        "message": content
-    };
 
-    var pub = '/chatRoom';
-    if (toUser.length > 1) {
-        pub = '/chat';
-        data.receiver = toUser;
-    }
 
-    data = JSON.stringify(data);
-
-    sendMessage(pub, {}, data);
     $('#content').val('');
     changeBtn();
 }

@@ -105,7 +105,7 @@ public class JspController {
         return "admin/Administration1";
     }
 
-
+    //信息咨询
     @RequestMapping(value = "Consultation")
     public String Consultation() {
         return "Consultation";
