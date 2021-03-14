@@ -1,4 +1,5 @@
 package com.colin.bean;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,9 +13,16 @@ import lombok.ToString;
 public class Message {
 
     /**
-     * 发送者信息
+     * 用户信息
      */
     private String userId;
+
+    /**
+     * 客服信息
+     */
+    private String adminId;
+
+
     /**
      * 消息
      */
@@ -27,10 +35,5 @@ public class Message {
      * 发送时间
      */
     private String sendTime;
-
-    /**
-     * 接受者信息
-     */
-    private String adminId;
 
 }

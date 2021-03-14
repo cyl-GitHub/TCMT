@@ -49,7 +49,7 @@
         <a href="#panel-left" data-iconpos="notext"
            class="col-xs-2 text-right"> </a> <a class="text-center col-xs-8"
                                                 target="_blank">咨询服务
-        （<font color="orange" id="adminId">23215</font>）
+        （<font color="orange" id="adminId">客服编号</font>）
     </a>
         <div class="dropdown settings">
             <i class="glyphicon glyphicon-cog dropdown-toggle" id="settings" data-toggle="dropdown"></i>
@@ -85,20 +85,20 @@
                         </div>
                     </div>
                 </li>
-                <li class="even" data-receiver="null">
-                    <a class="user">
-                        <img class="img-responsive avatar_" src="/static/images/avatar/0.jpeg">
-                        <span class="user-name">12</span>
-                    </a>
-                    <div class="reply-content-box">
-                        <span class="reply-time">
-                            <i class="glyphicon glyphicon-time">
-                            </i> 2021/02/26 09:45&nbsp;
-                        </span>
-                        <div class="reply-content pr" ondblclick="revokeMessage(this)"><span class="arrow">&nbsp;</span>12
-                        </div>
-                    </div>
-                </li>
+                <%--<li class="even" data-receiver="null">--%>
+                    <%--<a class="user">--%>
+                        <%--<img class="img-responsive avatar_" src="/static/images/avatar/0.jpeg">--%>
+                        <%--<span class="user-name">12</span>--%>
+                    <%--</a>--%>
+                    <%--<div class="reply-content-box">--%>
+                        <%--<span class="reply-time">--%>
+                            <%--<i class="glyphicon glyphicon-time">--%>
+                            <%--</i> 2021/02/26 09:45&nbsp;--%>
+                        <%--</span>--%>
+                        <%--<div class="reply-content pr" ondblclick="revokeMessage(this)"><span class="arrow">&nbsp;</span>12--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</li>--%>
             </ul>
         </div>
     </div>

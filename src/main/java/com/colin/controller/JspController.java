@@ -16,20 +16,28 @@ public class JspController {
 
     //主页
     @RequestMapping(value = "homepageChinese")
-    public String homepageChinese( HttpSession session) {
-        //客服列表
-        HashMap<String, String> admin = new HashMap<>();
-        //用户列表
-        HashMap<String, User> user = new HashMap<>();
+    public String homepageChinese(HttpSession session) {
 
-        //消息列表 客服id  消息详情
-        HashMap<String, Queue<Message>> message = new HashMap<>();
+        if (session.getAttribute("admin") == null) {
+            //客服列表
+            HashMap<String, String> admin = new HashMap<>();
+            admin.put("121", "等待中");
+            session.setAttribute("admin", admin);
+        }
 
-        admin.put("1", "等待中");
 
-        session.setAttribute("admin", admin);
-        session.setAttribute("user", user);
-        session.setAttribute("message", message);
+        if (session.getAttribute("user") == null) {
+            //用户列表
+            HashMap<String, User> user = new HashMap<>();
+            session.setAttribute("user", user);
+        }
+
+        if (session.getAttribute("messageQueue") == null) {
+            //消息列表 客服id  消息详情
+            HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
+            session.setAttribute("messageQueue", messageQueue);
+        }
+
 
         return "homepageChinese";
     }

@@ -220,20 +220,14 @@ function sendToChatRoom() {
             message: content,
             image: "",
             sendTime: "",
-            userReceiveId:$("#adminId").val()
+            userReceiveId: $("#adminId").val()
         }),
         //处理后端返回的数据
         success: function (data) {
             if (data.result == "发送成功") {
-
-            } else if (data.result == "暂无客服在线,请稍后再进行咨询!") {
-
-            } else if (data.result == "客服正忙,请稍后!") {
-
-            } else if (data.result == "身份证号格式错误") {
-
+                $("#adminId").html(data.message.adminId)
             } else {
-
+                showSystemMsg(data.result);
             }
         },
         //处理失败返回的数据
@@ -241,7 +235,6 @@ function sendToChatRoom() {
 
         }
     })
-
 
 
     $('#content').val('');

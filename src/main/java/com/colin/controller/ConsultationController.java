@@ -30,13 +30,14 @@ public class ConsultationController {
         HashMap admin = (HashMap) session.getAttribute("admin");
         HashMap<String, User> user = (HashMap) session.getAttribute("user");
 
-        int len = 100 + user.size();
 
         //当游客无id时
         if (message.getUserId() == null || message.getUserId().equals("")) {
+            int len = 100 + user.size();
             for (int i = 100; i < len; i++) {
                 if (!user.containsKey(String.valueOf(i))) {
                     message.setUserId(String.valueOf(i));
+                    user.put(String.valueOf(i), null);
                     break;
                 }
             }
@@ -55,6 +56,7 @@ public class ConsultationController {
 
                         if (entry.getValue().equals("等待中")) {
                             message.setAdminId(entry.getKey());
+                            admin.put(entry.getKey(), "工作中");
                             break;
                         }
                     }
@@ -71,7 +73,7 @@ public class ConsultationController {
 
 
         //将处理好的消息放到session中
-        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) session.getAttribute("message");
+        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) session.getAttribute("messageQueue");
         Queue<Message> messages;
         if (!messageQueue.containsKey(message.getAdminId())) {
             messages = new LinkedList<>();
@@ -81,8 +83,6 @@ public class ConsultationController {
 
         messages.add(message);
         messageQueue.put(message.getAdminId(), messages);
-        session.setAttribute("message", messageQueue);
-
 
         return map;
     }
