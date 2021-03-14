@@ -14,7 +14,7 @@ public class Message {
     /**
      * 发送者信息
      */
-    private String userSendId;
+    private String userId;
     /**
      * 消息
      */
@@ -31,6 +31,6 @@ public class Message {
     /**
      * 接受者信息
      */
-    private String userReceiveId;
+    private String adminId;
 
 }

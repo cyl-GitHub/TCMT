@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "consultationController")
@@ -35,17 +33,17 @@ public class ConsultationController {
         int len = 100 + user.size();
 
         //当游客无id时
-        if (message.getUserSendId() == null || message.getUserSendId().equals("")) {
+        if (message.getUserId() == null || message.getUserId().equals("")) {
             for (int i = 100; i < len; i++) {
                 if (!user.containsKey(String.valueOf(i))) {
-                    message.setUserSendId(String.valueOf(i));
+                    message.setUserId(String.valueOf(i));
                     break;
                 }
             }
         }
 
         //当第一次发消息无客服
-        if (message.getUserReceiveId() == null || message.getUserReceiveId().equals("")) {
+        if (message.getAdminId() == null || message.getAdminId().equals("")) {
             if (admin == null || admin.size() == 0) {
                 map.put("result", "暂无客服在线,请稍后再进行咨询!");
                 return map;
@@ -56,7 +54,7 @@ public class ConsultationController {
                         Map.Entry<String, String> entry = (Map.Entry<String, String>) map1it.next();
 
                         if (entry.getValue().equals("等待中")) {
-                            message.setUserReceiveId(entry.getKey());
+                            message.setAdminId(entry.getKey());
                             break;
                         }
                     }
@@ -70,6 +68,22 @@ public class ConsultationController {
         //有客服
         map.put("result", "发送成功");
         map.put("message", message);
+
+
+        //将处理好的消息放到session中
+        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) session.getAttribute("message");
+        Queue<Message> messages;
+        if (!messageQueue.containsKey(message.getAdminId())) {
+            messages = new LinkedList<>();
+        } else {
+            messages = messageQueue.get(message.getAdminId());
+        }
+
+        messages.add(message);
+        messageQueue.put(message.getAdminId(), messages);
+        session.setAttribute("message", messageQueue);
+
+
         return map;
     }
 

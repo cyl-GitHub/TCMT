@@ -1,5 +1,6 @@
 package com.colin.controller;
 
+import com.colin.bean.Message;
 import com.colin.bean.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Queue;
 
 @Controller
 @RequestMapping(value = "jspController")
@@ -15,15 +17,19 @@ public class JspController {
     //主页
     @RequestMapping(value = "homepageChinese")
     public String homepageChinese( HttpSession session) {
+        //客服列表
         HashMap<String, String> admin = new HashMap<>();
+        //用户列表
+        HashMap<String, User> user = new HashMap<>();
 
-        HashMap<String, User> user = new HashMap<String, User>();
+        //消息列表 客服id  消息详情
+        HashMap<String, Queue<Message>> message = new HashMap<>();
 
         admin.put("1", "等待中");
 
         session.setAttribute("admin", admin);
         session.setAttribute("user", user);
-
+        session.setAttribute("message", message);
 
         return "homepageChinese";
     }
