@@ -34,7 +34,7 @@ public class ConsultationController {
         //当游客无id时
         if (message.getUserId() == null || message.getUserId().equals("")) {
             int len = 100 + user.size();
-            for (int i = 100; i < len; i++) {
+            for (int i = 100; i <= len; i++) {
                 if (!user.containsKey(String.valueOf(i))) {
                     message.setUserId(String.valueOf(i));
                     user.put(String.valueOf(i), null);
@@ -68,6 +68,7 @@ public class ConsultationController {
         }
 
         //有客服
+
         map.put("result", "发送成功");
         map.put("message", message);
 

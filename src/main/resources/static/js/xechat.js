@@ -216,16 +216,21 @@ function sendToChatRoom() {
         contentType: "application/json;charset=utf-8",
         //向后端传输的数据
         data: JSON.stringify({
-            userSendId: $("#userId").val(),
+            userId: $("#userId").val(),
+            adminId: $("#adminId").val(),
             message: content,
             image: "",
             sendTime: "",
-            userReceiveId: $("#adminId").val()
+            type: 0
+
         }),
         //处理后端返回的数据
         success: function (data) {
             if (data.result == "发送成功") {
-                $("#adminId").html(data.message.adminId)
+                uid = data.message.userId;
+                $("#adminId").html(data.message.adminId);
+                $("#userId").html(data.message.userId);
+                showUserMsg(data);
             } else {
                 showSystemMsg(data.result);
             }
@@ -326,25 +331,31 @@ function createUser() {
  * @param data
  */
 function showUserMsg(data) {
+
+    var user_avatar = "/static/images/avatar/0.jpeg";
     var user = data.user;
-    var isMe = user.userId === uid;
+    var message = data.message;
+    var isMe = data.message.type === 1;
     var style_css = isMe ? 'even' : 'odd';
     var event = isMe ? 'ondblclick=revokeMessage(this)' : '';
-    var event2 = isMe ? '' : 'ondblclick=showToUser("' + user.username + '")';
 
     var showMessage = data.message == null ? '' : htmlEncode(data.message);
     var showImage = data.image == null ? '' : '<div class="show_image"><img src="' + data.image + '"/></div>';
+
     var li = '<li class=' + style_css + ' id=' + data.messageId + ' data-receiver=' + data.receiver + '>';
-    var a = '<a class="user" ' + event2 + '>';
-    var avatar = '<img class="img-responsive avatar_" src=' + user.avatar + '\>';
-    var span = '<span class="user-name">' + user.username + '</span></a>';
+    var a = '<a class="user">';
+    var avatar = '<img class="img-responsive avatar_" src=' + user_avatar + '\>';
+    var span = '<span class="user-name">' + message.userId + '</span></a>';
+
     var div_me = '<div class="reply-content-box"><span class="reply-time"><i class="glyphicon glyphicon-time"></i> '
-        + data.sendTime + '&nbsp;<i class="glyphicon glyphicon-map-marker"></i>' + user.address + '</span>';
+        + data.sendTime + '&nbsp;<i class="glyphicon glyphicon-map-marker"></i>' + '</span>';
+
     var div = '<div class="reply-content-box"><span class="reply-time"><i class="glyphicon glyphicon-map-marker"></i>'
-        + user.address + '&nbsp;<i class="glyphicon glyphicon-time"></i> ' + data.sendTime + '</span>';
+        + '&nbsp;<i class="glyphicon glyphicon-time"></i> ' + data.sendTime + '</span>';
+
     var div2 = '<div class="reply-content pr" ' + event + '><span class="arrow">&nbsp;</span>' + showMessage + showImage + '</div></div></li>';
 
-    var html = li + a + avatar + span + (isMe ? div_me : div) + div2;
+    var html = li + a + avatar + span + (data.message.type === 1 ? div_me : div) + div2;
 
     $("#show_content").append(html);
     jumpToLow();

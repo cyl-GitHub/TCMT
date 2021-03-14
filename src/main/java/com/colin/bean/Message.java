@@ -36,4 +36,7 @@ public class Message {
      */
     private String sendTime;
 
+    //用户发送0  客服发送1
+    private Integer type;
+
 }
