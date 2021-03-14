@@ -21,7 +21,11 @@
 <body>
 <div id="login" style="display: none">
     <div><h3 class="text-center">TCMT咨询登录</h3></div>
-    <font color="orange" id="userId" style="display: none">客服编号</font>
+    <div></div>
+    <%--<font color="orange" id="userId" style="display: none">用户编号</font>--%>
+
+    <span id="userId" style="display: none">123456</span>
+
     <div class="login_fm">
         <form>
             <div class="login_avatar dropdown">
