@@ -21,6 +21,7 @@
 <body>
 <div id="login" style="display: none">
     <div><h3 class="text-center">TCMT咨询登录</h3></div>
+    <span id="userId" style="display: none"></span>
     <div class="login_fm">
         <form>
             <div class="login_avatar dropdown">

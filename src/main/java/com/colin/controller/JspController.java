@@ -1,5 +1,6 @@
 package com.colin.controller;
 
+import com.colin.bean.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,9 +17,12 @@ public class JspController {
     public String homepageChinese( HttpSession session) {
         HashMap<String, String> admin = new HashMap<>();
 
+        HashMap<String, User> user = new HashMap<String, User>();
+
         admin.put("1", "等待中");
 
         session.setAttribute("admin", admin);
+        session.setAttribute("user", user);
 
 
         return "homepageChinese";

@@ -1,6 +1,7 @@
 package com.colin.controller;
 
 import com.colin.bean.Message;
+import com.colin.bean.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 @Controller
 @RequestMapping(value = "consultationController")
@@ -30,6 +30,19 @@ public class ConsultationController {
     public Map userSend(@RequestBody Message message, HttpSession session) {
         Map<String, Object> map = new HashMap();
         HashMap admin = (HashMap) session.getAttribute("admin");
+        HashMap<String, User> user = (HashMap) session.getAttribute("user");
+
+        int len = 100 + user.size();
+
+        //当游客无id时
+        if (message.getUserSendId() == null || message.getUserSendId().equals("")) {
+            for (int i = 100; i < len; i++) {
+                if (!user.containsKey(String.valueOf(i))) {
+                    message.setUserSendId(String.valueOf(i));
+                    break;
+                }
+            }
+        }
 
         //当第一次发消息无客服
         if (message.getUserReceiveId() == null || message.getUserReceiveId().equals("")) {
@@ -55,11 +68,9 @@ public class ConsultationController {
         }
 
         //有客服
-
-
-
-
-        return null;
+        map.put("result", "发送成功");
+        map.put("message", message);
+        return map;
     }
 
 
