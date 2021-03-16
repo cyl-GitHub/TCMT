@@ -133,12 +133,46 @@ function config() {
  * 关闭连接
  */
 function disconnect() {
+    btn_exit();
     if (stompClient !== null) {
         setConnected(false);
         stompClient.disconnect();
         refresh();
     }
 }
+
+
+function btn_exit() {
+    var content = $("#content").val();
+    var userId = $("#userId").text();
+    var adminId = $("#adminId").text();
+
+    $.ajax({
+        url: "/consultationController/exit", dataType: "json",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        //向后端传输的数据
+        data: JSON.stringify({
+            userId: userId,
+            adminId: adminId,
+            message: content,
+            image: "",
+            sendTime: "",
+            type: true
+
+        }),
+        //处理后端返回的数据
+        success: function (data) {
+
+        },
+        //处理失败返回的数据
+        error: function (data) {
+
+        }
+    })
+
+}
+
 
 /**
  * 设置连接状态
@@ -687,6 +721,7 @@ function logout() {
  * 刷新
  */
 function refresh() {
+    btn_exit();
     window.location.reload();
 }
 

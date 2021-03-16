@@ -5,7 +5,6 @@ import com.colin.bean.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -19,7 +18,30 @@ public class ConsultationController {
 
     //信息咨询
     @RequestMapping(value = "Consultation")
-    public String Consultation() {
+    public String Consultation(HttpSession session) {
+
+        if (session.getAttribute("admin") == null) {
+            //客服列表
+            HashMap<String, String> admin = new HashMap<>();
+            admin.put("121", "等待中");
+            session.setAttribute("admin", admin);
+        }
+
+
+        if (session.getAttribute("user") == null) {
+            //用户列表
+            HashMap<String, User> user = new HashMap<>();
+            session.setAttribute("user", user);
+        }
+
+        if (session.getAttribute("messageQueue") == null) {
+            //消息列表 客服id  消息详情
+            HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
+            session.setAttribute("messageQueue", messageQueue);
+        }
+
+
+
         return "Consultation";
     }
 
@@ -118,6 +140,36 @@ public class ConsultationController {
         map.put("messages", messages);
 
         return map;
+    }
+
+
+    @RequestMapping("/exit")
+    @ResponseBody
+    public Map exit(@RequestBody Message message, HttpSession session) {
+        if (message.getUserId() == null && message.getUserId().equals("")) {
+            return null;
+        }
+        if (message.getAdminId() == null && message.getAdminId().equals("")) {
+            return null;
+        }
+
+        HashMap admin = (HashMap) session.getAttribute("admin");
+        HashMap<String, User> user = (HashMap) session.getAttribute("user");
+        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) session.getAttribute("messageQueue");
+
+        if (admin.containsKey(message.getAdminId())) {
+            admin.put(message.getAdminId(), "等待中");
+        }
+
+        if (user.containsKey(message.getUserId())) {
+            user.remove(message.getUserId());
+        }
+
+        if (messageQueue.containsKey(message.getAdminId())) {
+            messageQueue.remove(message.getAdminId());
+        }
+
+        return null;
     }
 
 
