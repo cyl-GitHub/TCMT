@@ -204,7 +204,7 @@ function sendToChatRoom() {
                 uid = data.message.userId;
                 $("#adminId").html(data.message.adminId);
                 $("#userId").html(data.message.userId);
-                showUserMsg(data);
+                //showUserMsg(data);
             } else {
                 showSystemMsg(data.result);
             }
@@ -232,12 +232,14 @@ function flushMessage() {
         }),
         //处理后端返回的数据
         success: function (data) {
+
+            var messages = data.messages;
+
             if (data != null) {
-
-
+                for (var i = 0; i < messages.length; i++) {
+                    showUserMsgList(messages[i]);
+                }
             }
-
-
         },
         //处理失败返回的数据
         error: function (data) {
@@ -372,6 +374,43 @@ function showUserMsg(data) {
     jumpToLow();
 }
 
+//供使用者调用
+function trim(s) {
+    return trimRight(trimLeft(s));
+}
+
+//去掉左边的空白
+function trimLeft(s) {
+    if (s == null) {
+        return "";
+    }
+    var whitespace = new String(" \t\n\r");
+    var str = new String(s);
+    if (whitespace.indexOf(str.charAt(0)) != -1) {
+        var j = 0, i = str.length;
+        while (j < i && whitespace.indexOf(str.charAt(j)) != -1) {
+            j++;
+        }
+        str = str.substring(j, i);
+    }
+    return str;
+}
+
+//去掉右边的空白 www.2cto.com
+function trimRight(s) {
+    if (s == null) return "";
+    var whitespace = new String(" \t\n\r");
+    var str = new String(s);
+    if (whitespace.indexOf(str.charAt(str.length - 1)) != -1) {
+        var i = str.length - 1;
+        while (i >= 0 && whitespace.indexOf(str.charAt(i)) != -1) {
+            i--;
+        }
+        str = str.substring(0, i + 1);
+    }
+    return str;
+}
+
 
 function showUserMsgList(message) {
 
@@ -382,7 +421,12 @@ function showUserMsgList(message) {
     var style_css = isMe ? 'even' : 'odd';
     var event = isMe ? 'ondblclick=revokeMessage(this)' : '';
 
-    var showMessage = message.message;
+    if (message.image == "") {
+        message.image = null;
+    }
+
+
+    var showMessage = trim(message.message);
     var showImage = message.image == null ? '' : '<div class="show_image"><img src="' + message.image + '"/></div>';
 
     var li = '<li class=' + style_css + '>';
@@ -397,7 +441,6 @@ function showUserMsgList(message) {
         + '&nbsp;<i class="glyphicon glyphicon-time"></i> ' + message.sendTime + '</span>';
 
     var div2 = '<div class="reply-content pr" ' + event + '><span class="arrow">&nbsp;</span>' + showMessage + showImage + '</div></div></li>';
-
     var html = li + a + avatar + span + (message.type ? div_me : div) + div2;
 
     $("#show_content").append(html);

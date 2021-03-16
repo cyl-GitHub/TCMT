@@ -17,6 +17,15 @@
           href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<%--<script>--%>
+    <%--window.onbeforeunload = onbeforeunload_handler;--%>
+    <%--function onbeforeunload_handler()--%>
+    <%--{--%>
+        <%--btn_exit();--%>
+    <%--}--%>
+<%--</script>--%>
+
 </head>
 <body>
 <div id="login" style="display: none">
