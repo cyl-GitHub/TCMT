@@ -232,6 +232,11 @@ function flushMessage() {
         }),
         //处理后端返回的数据
         success: function (data) {
+            if (data != null) {
+
+
+            }
+
 
         },
         //处理失败返回的数据
@@ -337,7 +342,7 @@ function showUserMsg(data) {
     var event = isMe ? 'ondblclick=revokeMessage(this)' : '';
 
     var showMessage = data.message.message;
-    var showImage = data.image == null ? '' : '<div class="show_image"><img src="' + data.image + '"/></div>';
+    var showImage = data.message.image == null ? '' : '<div class="show_image"><img src="' + data.message.image + '"/></div>';
 
     var li = '<li class=' + style_css + ' id=' + data.messageId + ' data-receiver=' + data.receiver + '>';
     var a = '<a class="user">';
@@ -362,6 +367,38 @@ function showUserMsg(data) {
     //     html = li + a + avatar + span + div_me + div2;
     // }
 
+
+    $("#show_content").append(html);
+    jumpToLow();
+}
+
+
+function showUserMsgList(message) {
+
+    var user_avatar = "/static/images/avatar/0.jpeg";
+
+    var isMe = message.type;
+
+    var style_css = isMe ? 'even' : 'odd';
+    var event = isMe ? 'ondblclick=revokeMessage(this)' : '';
+
+    var showMessage = message.message;
+    var showImage = message.image == null ? '' : '<div class="show_image"><img src="' + message.image + '"/></div>';
+
+    var li = '<li class=' + style_css + '>';
+    var a = '<a class="user">';
+    var avatar = '<img class="img-responsive avatar_" src=' + user_avatar + '\>';
+    var span = '<span class="user-name">' + message.userId + '</span></a>';
+
+    var div_me = '<div class="reply-content-box"><span class="reply-time"><i class="glyphicon glyphicon-time"></i> '
+        + message.sendTime + '&nbsp;' + '</span>';
+
+    var div = '<div class="reply-content-box"><span class="reply-time">'
+        + '&nbsp;<i class="glyphicon glyphicon-time"></i> ' + message.sendTime + '</span>';
+
+    var div2 = '<div class="reply-content pr" ' + event + '><span class="arrow">&nbsp;</span>' + showMessage + showImage + '</div></div></li>';
+
+    var html = li + a + avatar + span + (message.type ? div_me : div) + div2;
 
     $("#show_content").append(html);
     jumpToLow();

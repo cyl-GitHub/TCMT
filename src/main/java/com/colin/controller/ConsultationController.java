@@ -93,7 +93,7 @@ public class ConsultationController {
         }
 
         messages.add(message);
-        messageQueue.put(message.getAdminId(), messages);
+        //messageQueue.put(message.getAdminId(), messages);
 
         return map;
     }
@@ -104,7 +104,17 @@ public class ConsultationController {
     public Map flushMessage(@RequestParam String adminId, HttpSession session) {
         HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) session.getAttribute("messageQueue");
 
-        return null;
+        if (!messageQueue.containsKey(adminId)) {
+            return null;
+        }
+
+        Queue<Message> messages = messageQueue.get(adminId);
+
+        Map<String, Object> map = new HashMap();
+        map.put("messages", messages);
+
+
+        return map;
     }
 
 
