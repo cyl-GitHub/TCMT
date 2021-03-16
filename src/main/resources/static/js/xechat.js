@@ -176,39 +176,13 @@ function showHeadPortrait() {
 function sendToChatRoom() {
     // 获取发送的内容
     var content = $("#content").val();
+
+    var userId = $("#userId").text();
+    var adminId = $("#adminId").text();
     // 内容不能为空
     if (content.trim().length < 1) {
         return;
     }
-
-    // showToUserList(content);
-    //
-    // var toUser = [uid];
-    // var names = content.split('@');
-    //
-    // for (var i = 1; i < names.length; i++) {
-    //     var index = names[i].indexOf(' ');
-    //     var userId = getUserIdByName(names[i].substr(0, index != -1 ? index : names[i].length));
-    //     // userId不能是空的，且toUser数组中不存在该userId
-    //     if (userId !== undefined && userId !== '' && toUser.indexOf(userId) == -1) {
-    //         toUser.push(userId);
-    //     }
-    // }
-    //
-    // var data = {
-    //     "message": content
-    // };
-    //
-    // var pub = '/chatRoom';
-    // if (toUser.length > 1) {
-    //     pub = '/chat';
-    //     data.receiver = toUser;
-    // }
-    //
-    // data = JSON.stringify(data);
-    //
-    // sendMessage(pub, {}, data);
-
 
     $.ajax({
         url: "/consultationController/userSend", dataType: "json",
@@ -216,12 +190,12 @@ function sendToChatRoom() {
         contentType: "application/json;charset=utf-8",
         //向后端传输的数据
         data: JSON.stringify({
-            userId: $("#userId").val(),
-            adminId: $("#adminId").val(),
+            userId: userId,
+            adminId: adminId,
             message: content,
             image: "",
             sendTime: "",
-            type: 0
+            type: true
 
         }),
         //处理后端返回的数据
@@ -241,10 +215,32 @@ function sendToChatRoom() {
         }
     })
 
-
     $('#content').val('');
     changeBtn();
 }
+
+
+function flushMessage() {
+    var adminId = $("#adminId").text();
+    $.ajax({
+        url: "/consultationController/flushMessage", dataType: "json",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        //向后端传输的数据
+        data: JSON.stringify({
+            adminId: adminId
+        }),
+        //处理后端返回的数据
+        success: function (data) {
+
+        },
+        //处理失败返回的数据
+        error: function (data) {
+
+        }
+    })
+}
+
 
 /**
  * 响应码映射
@@ -327,7 +323,7 @@ function createUser() {
 }
 
 /**
- * 显示用户消息  有用 需要改
+ * 显示用户消息  有用 ok
  * @param data
  */
 function showUserMsg(data) {
@@ -335,11 +331,12 @@ function showUserMsg(data) {
     var user_avatar = "/static/images/avatar/0.jpeg";
     var user = data.user;
     var message = data.message;
-    var isMe = data.message.type === 1;
+    var isMe = data.message.type;
+
     var style_css = isMe ? 'even' : 'odd';
     var event = isMe ? 'ondblclick=revokeMessage(this)' : '';
 
-    var showMessage = data.message == null ? '' : htmlEncode(data.message);
+    var showMessage = data.message.message;
     var showImage = data.image == null ? '' : '<div class="show_image"><img src="' + data.image + '"/></div>';
 
     var li = '<li class=' + style_css + ' id=' + data.messageId + ' data-receiver=' + data.receiver + '>';
@@ -348,14 +345,23 @@ function showUserMsg(data) {
     var span = '<span class="user-name">' + message.userId + '</span></a>';
 
     var div_me = '<div class="reply-content-box"><span class="reply-time"><i class="glyphicon glyphicon-time"></i> '
-        + data.sendTime + '&nbsp;<i class="glyphicon glyphicon-map-marker"></i>' + '</span>';
+        + data.message.sendTime + '&nbsp;' + '</span>';
 
-    var div = '<div class="reply-content-box"><span class="reply-time"><i class="glyphicon glyphicon-map-marker"></i>'
-        + '&nbsp;<i class="glyphicon glyphicon-time"></i> ' + data.sendTime + '</span>';
+    var div = '<div class="reply-content-box"><span class="reply-time">'
+        + '&nbsp;<i class="glyphicon glyphicon-time"></i> ' + data.message.sendTime + '</span>';
 
     var div2 = '<div class="reply-content pr" ' + event + '><span class="arrow">&nbsp;</span>' + showMessage + showImage + '</div></div></li>';
 
-    var html = li + a + avatar + span + (data.message.type === 1 ? div_me : div) + div2;
+    var html = li + a + avatar + span + (data.message.type ? div_me : div) + div2;
+    // var html;
+    //
+    //
+    // if (data.message.type) {
+    //     html = li + a + avatar + span + div + div2;
+    // } else {
+    //     html = li + a + avatar + span + div_me + div2;
+    // }
+
 
     $("#show_content").append(html);
     jumpToLow();

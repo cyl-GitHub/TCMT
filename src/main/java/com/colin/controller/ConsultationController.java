@@ -5,9 +5,11 @@ import com.colin.bean.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -30,6 +32,7 @@ public class ConsultationController {
         HashMap admin = (HashMap) session.getAttribute("admin");
         HashMap<String, User> user = (HashMap) session.getAttribute("user");
 
+        message.setType(true);
 
         //当游客无id时
         if (message.getUserId() == null || message.getUserId().equals("")) {
@@ -67,6 +70,13 @@ public class ConsultationController {
             }
         }
 
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm");//设置日期格式
+        System.out.println();// new Date()为获取当前系统时间
+
+        message.setSendTime(df.format(new Date()));
+
+
         //有客服
 
         map.put("result", "发送成功");
@@ -86,6 +96,15 @@ public class ConsultationController {
         messageQueue.put(message.getAdminId(), messages);
 
         return map;
+    }
+
+
+    @RequestMapping("/flushMessage")
+    @ResponseBody
+    public Map flushMessage(@RequestParam String adminId, HttpSession session) {
+        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) session.getAttribute("messageQueue");
+
+        return null;
     }
 
 

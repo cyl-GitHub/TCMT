@@ -22,9 +22,8 @@
 <div id="login" style="display: none">
     <div><h3 class="text-center">TCMT咨询登录</h3></div>
     <div></div>
-    <%--<font color="orange" id="userId" style="display: none">用户编号</font>--%>
 
-    <span id="userId" style="display: none">123456</span>
+    <span id="userId" style="display: none"></span>
 
     <div class="login_fm">
         <form>
@@ -51,10 +50,12 @@
     <div class="header linear-g fixed_">
 
         <a href="#panel-left" data-iconpos="notext"
-           class="col-xs-2 text-right"> </a> <a class="text-center col-xs-8"
-                                                target="_blank">咨询服务
-        （<font color="orange" id="adminId">客服编号</font>）
-    </a>
+           class="col-xs-2 text-right"> </a>
+        <a class="text-center col-xs-8" target="_blank">咨询服务
+            （<font color="orange" id="adminId"></font>）</a>
+
+        <button onclick="flushMessage()">刷新</button>
+
         <div class="dropdown settings">
             <i class="glyphicon glyphicon-cog dropdown-toggle" id="settings" data-toggle="dropdown"></i>
             <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="settings" id="settings-menu">
