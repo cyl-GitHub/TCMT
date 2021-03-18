@@ -51,6 +51,8 @@ window.onload = function () {
 // 监听窗口关闭事件，当窗口关闭时，主动去关闭stomp连接
 window.onbeforeunload = disconnect;
 
+window.
+
 /**
  * 连接服务器，订阅相关地址
  */
@@ -272,6 +274,10 @@ function flushMessage() {
             if (data != null) {
                 for (var i = 0; i < messages.length; i++) {
                     showUserMsgList(messages[i]);
+                    if (opendSound) {
+                        // 提示音
+                        beep();
+                    }
                 }
             }
         },
@@ -918,10 +924,7 @@ function msgNoticeByTitle() {
         return;
     }
 
-    if (opendSound) {
-        // 提示音
-        beep();
-    }
+
     // 窗口不可见显示提醒
     document.title = '[' + (++newMsgTotal) + '条新消息]' + title;
 }

@@ -18,13 +18,10 @@
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-<%--<script>--%>
-    <%--window.onbeforeunload = onbeforeunload_handler;--%>
-    <%--function onbeforeunload_handler()--%>
-    <%--{--%>
-        <%--btn_exit();--%>
-    <%--}--%>
-<%--</script>--%>
+    <script>
+        var t2 = window.setInterval("flushMessage()", 300);
+
+    </script>
 
 </head>
 <body>
@@ -63,19 +60,21 @@
         <a class="text-center col-xs-8" target="_blank">咨询服务
             （<font color="orange" id="adminId"></font>）</a>
 
-        <button onclick="flushMessage()">刷新</button>
-
         <div class="dropdown settings">
             <i class="glyphicon glyphicon-cog dropdown-toggle" id="settings" data-toggle="dropdown"></i>
             <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="settings" id="settings-menu">
-                <li><input type="checkbox" checked id="checkNotice"/>&nbsp;<i
-                        class="glyphicon glyphicon-bell"></i><span>新消息通知</span></li>
-                <li><input type="checkbox" checked id="checkSound"/>&nbsp;<i
-                        class="glyphicon glyphicon-volume-up"></i><span>消息提示音</span></li>
-                <li class="divider"></li>
+                <li>
+                    <input type="checkbox" checked id="checkSound"/>&nbsp;
+                    <i class="glyphicon glyphicon-volume-up"></i>
+                    <span>消息提示音</span>
+                </li>
+                <li class="divider">
+
+                </li>
                 <li style="float: right;margin-right: 10px">
-                    <button type="button" class="btn btn-primary btn-xs" onclick="exit()">退出 <i
-                            class="glyphicon glyphicon-log-out dropdown-toggle"></i></button>
+                    <button type="button" class="btn btn-primary btn-xs" onclick="exit()">退出
+                        <i class="glyphicon glyphicon-log-out dropdown-toggle"></i>
+                    </button>
                 </li>
             </ul>
         </div>

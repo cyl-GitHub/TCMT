@@ -41,7 +41,6 @@ public class ConsultationController {
         }
 
 
-
         return "Consultation";
     }
 
@@ -137,7 +136,11 @@ public class ConsultationController {
         Queue<Message> messages = messageQueue.get(adminId);
 
         Map<String, Object> map = new HashMap();
+
         map.put("messages", messages);
+
+        Queue<Message> messages1 = new LinkedList();
+        messageQueue.put(adminId,messages1);
 
         return map;
     }
