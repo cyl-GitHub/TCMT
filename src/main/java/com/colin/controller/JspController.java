@@ -14,9 +14,10 @@ import java.util.Queue;
 @RequestMapping(value = "jspController")
 public class JspController {
 
+
     //主页
-    @RequestMapping(value = "homepageChinese")
-    public String homepageChinese(HttpSession session) {
+    @RequestMapping(value = "beginSession")
+    public String beginSession(HttpSession session) {
 
         if (session.getAttribute("admin") == null) {
             //客服列表
@@ -39,6 +40,13 @@ public class JspController {
         }
 
 
+        return "beginSession";
+    }
+
+
+    //主页
+    @RequestMapping(value = "homepageChinese")
+    public String homepageChinese() {
         return "homepageChinese";
     }
 

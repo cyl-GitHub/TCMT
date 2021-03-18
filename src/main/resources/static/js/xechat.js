@@ -50,6 +50,7 @@ window.onload = function () {
 
 // 监听窗口关闭事件，当窗口关闭时，主动去关闭stomp连接
 window.onbeforeunload = disconnect;
+window.onpagehide = disconnect;
 
 
 /**
@@ -164,6 +165,7 @@ function btn_exit() {
         }),
         //处理后端返回的数据
         success: function (data) {
+            window.close();
 
         },
         //处理失败返回的数据

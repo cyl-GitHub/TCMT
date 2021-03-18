@@ -18,27 +18,27 @@ public class ConsultationController {
 
     //信息咨询
     @RequestMapping(value = "Consultation")
-    public String Consultation(HttpSession session) {
+    public String Consultation() {
 
-        if (session.getAttribute("admin") == null) {
-            //客服列表
-            HashMap<String, String> admin = new HashMap<>();
-            admin.put("121", "等待中");
-            session.setAttribute("admin", admin);
-        }
-
-
-        if (session.getAttribute("user") == null) {
-            //用户列表
-            HashMap<String, User> user = new HashMap<>();
-            session.setAttribute("user", user);
-        }
-
-        if (session.getAttribute("messageQueue") == null) {
-            //消息列表 客服id  消息详情
-            HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
-            session.setAttribute("messageQueue", messageQueue);
-        }
+//        if (session.getAttribute("admin") == null) {
+//            //客服列表
+//            HashMap<String, String> admin = new HashMap<>();
+//            admin.put("121", "等待中");
+//            session.setAttribute("admin", admin);
+//        }
+//
+//
+//        if (session.getAttribute("user") == null) {
+//            //用户列表
+//            HashMap<String, User> user = new HashMap<>();
+//            session.setAttribute("user", user);
+//        }
+//
+//        if (session.getAttribute("messageQueue") == null) {
+//            //消息列表 客服id  消息详情
+//            HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
+//            session.setAttribute("messageQueue", messageQueue);
+//        }
 
 
         return "Consultation";
@@ -126,6 +126,11 @@ public class ConsultationController {
     @RequestMapping("/flushMessage")
     @ResponseBody
     public Map flushMessage(@RequestBody Message message, HttpSession session) {
+
+        if (message.getAdminId() == null || message.getAdminId().equals("")) {
+            return null;
+        }
+
         String adminId = message.getAdminId();
         HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) session.getAttribute("messageQueue");
 
@@ -140,7 +145,7 @@ public class ConsultationController {
         map.put("messages", messages);
 
         Queue<Message> messages1 = new LinkedList();
-        messageQueue.put(adminId,messages1);
+        messageQueue.put(adminId, messages1);
 
         return map;
     }
@@ -174,6 +179,7 @@ public class ConsultationController {
 
         return null;
     }
+
 
 
 }

@@ -97,20 +97,7 @@
                         </div>
                     </div>
                 </li>
-                <%--<li class="even" data-receiver="null">--%>
-                <%--<a class="user">--%>
-                <%--<img class="img-responsive avatar_" src="/static/images/avatar/0.jpeg">--%>
-                <%--<span class="user-name">12</span>--%>
-                <%--</a>--%>
-                <%--<div class="reply-content-box">--%>
-                <%--<span class="reply-time">--%>
-                <%--<i class="glyphicon glyphicon-time">--%>
-                <%--</i> 2021/02/26 09:45&nbsp;--%>
-                <%--</span>--%>
-                <%--<div class="reply-content pr" ondblclick="revokeMessage(this)"><span class="arrow">&nbsp;</span>12--%>
-                <%--</div>--%>
-                <%--</div>--%>
-                <%--</li>--%>
+
             </ul>
         </div>
     </div>
