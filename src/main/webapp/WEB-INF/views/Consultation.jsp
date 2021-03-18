@@ -20,7 +20,6 @@
 
     <script>
         var t2 = window.setInterval("flushMessage()", 300);
-
     </script>
 
 </head>

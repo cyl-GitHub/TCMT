@@ -51,7 +51,6 @@ window.onload = function () {
 // 监听窗口关闭事件，当窗口关闭时，主动去关闭stomp连接
 window.onbeforeunload = disconnect;
 
-window.
 
 /**
  * 连接服务器，订阅相关地址
