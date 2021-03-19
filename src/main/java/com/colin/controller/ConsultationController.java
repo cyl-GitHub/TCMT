@@ -2,11 +2,16 @@ package com.colin.controller;
 
 import com.colin.bean.Message;
 import com.colin.bean.User;
+
+import com.sun.glass.ui.Application;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -14,7 +19,8 @@ import java.util.*;
 @Controller
 @RequestMapping(value = "consultationController")
 public class ConsultationController {
-
+    @Autowired
+    private ServletContext application;
 
     //信息咨询
     @RequestMapping(value = "Consultation")
@@ -50,8 +56,8 @@ public class ConsultationController {
     @ResponseBody
     public Map userSend(@RequestBody Message message, HttpSession session) {
         Map<String, Object> map = new HashMap();
-        HashMap admin = (HashMap) session.getAttribute("admin");
-        HashMap<String, User> user = (HashMap) session.getAttribute("user");
+        HashMap admin = (HashMap) application.getAttribute("admin");
+        HashMap<String, User> user = (HashMap) application.getAttribute("user");
 
         message.setType(true);
 
@@ -104,8 +110,8 @@ public class ConsultationController {
         map.put("message", message);
 
 
-        //将处理好的消息放到session中
-        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) session.getAttribute("messageQueue");
+        //将处理好的消息放到application中
+        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
         Queue<Message> messages;
         if (!messageQueue.containsKey(message.getAdminId())) {
             messages = new LinkedList<>();
@@ -132,7 +138,7 @@ public class ConsultationController {
         }
 
         String adminId = message.getAdminId();
-        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) session.getAttribute("messageQueue");
+        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
 
         if (!messageQueue.containsKey(adminId)) {
             return null;
@@ -161,9 +167,9 @@ public class ConsultationController {
             return null;
         }
 
-        HashMap admin = (HashMap) session.getAttribute("admin");
-        HashMap<String, User> user = (HashMap) session.getAttribute("user");
-        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) session.getAttribute("messageQueue");
+        HashMap admin = (HashMap) application.getAttribute("admin");
+        HashMap<String, User> user = (HashMap) application.getAttribute("user");
+        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
 
         if (admin.containsKey(message.getAdminId())) {
             admin.put(message.getAdminId(), "等待中");

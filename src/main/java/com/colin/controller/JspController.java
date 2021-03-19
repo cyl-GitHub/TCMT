@@ -2,41 +2,48 @@ package com.colin.controller;
 
 import com.colin.bean.Message;
 import com.colin.bean.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.*;
+import javax.servlet.descriptor.JspConfigDescriptor;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Queue;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "jspController")
 public class JspController {
-
+    @Autowired
+    private ServletContext application;
 
     //主页
     @RequestMapping(value = "beginSession")
     public String beginSession(HttpSession session) {
 
-        if (session.getAttribute("admin") == null) {
+        if (application.getAttribute("admin") == null) {
             //客服列表
             HashMap<String, String> admin = new HashMap<>();
             admin.put("121", "等待中");
-            session.setAttribute("admin", admin);
+            application.setAttribute("admin", admin);
         }
 
 
-        if (session.getAttribute("user") == null) {
+        if (application.getAttribute("user") == null) {
             //用户列表
             HashMap<String, User> user = new HashMap<>();
-            session.setAttribute("user", user);
+            application.setAttribute("user", user);
         }
 
-        if (session.getAttribute("messageQueue") == null) {
+        if (application.getAttribute("messageQueue") == null) {
             //消息列表 客服id  消息详情
             HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
-            session.setAttribute("messageQueue", messageQueue);
+            application.setAttribute("messageQueue", messageQueue);
         }
 
 
@@ -141,4 +148,6 @@ public class JspController {
     public String Administration1() {
         return "admin/Administration1";
     }
+
+
 }
