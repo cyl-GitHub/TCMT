@@ -1,4 +1,4 @@
-function   Join() {
+function Join() {
     $.ajax({
         url: "/expertController/doLogin", dataType: "json",
         type: "POST",

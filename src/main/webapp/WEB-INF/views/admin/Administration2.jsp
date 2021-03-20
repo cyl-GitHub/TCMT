@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="format-detection" content="telephone=no">
 
-    <title>管理员操作</title>
+    <title>医生加盟</title>
 
     <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/pushy.css">
@@ -29,6 +29,12 @@
     <link rel="stylesheet" type="text/css" href="/static/css/general.css">
     <link rel="stylesheet" type="text/css" href="/static/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/wphotolist.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/general.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/admin/css_v1.css?v=0.03"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/admin/popwindows.css"/>
+
+
+
 
     <style type="text/css">
         #body.cn {
@@ -214,11 +220,17 @@
     <%--<script src="/static/js/admin/Administration.js"></script>--%>
     <script src="/static/js/jquery-1.12.0.min.js" integrity="sha256-Xxq2X+KtazgaGuA2cWR1v3jJsuMJUozyIXDB3e793L8="
             crossorigin="anonymous"></script>
+
     <script src="/static/js/classie.js"></script>
     <script src="/static/js/modernizr.js"></script>
     <script src="/static/js/custom.js"></script>
     <script src="/static/js/lightgallery-all.min.js"></script>
     <script src="/static/js/wphotolist.js"></script>
+    <script src="/static/js/expert/Join.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/static/js/jquery-eiui.js?1576543722" lang="javascript"></script>
+    <script src="/static/js/jquery.placeholder.js" lang="javascript"></script>
+    <script src="/static/gt.js"></script>
 
     <script type="text/javascript">
         // IE 8 or older
@@ -254,7 +266,7 @@
     <div class="container-padding pg-container ">
         <div class="pg-col-l">
             <ul class="nav-left">
-                <li class="current" onclick="goUrl('/userController/selectUser');">
+                <li class="level2-d" onclick="goUrl('/userController/selectUser');">
                     用户管理
                 </li>
 
@@ -262,7 +274,7 @@
                     医生管理
                 </li>
 
-                <li class="level2-d" onclick="goUrl('/jspController/ExpertRegisterChinese');">
+                <li class="current" onclick="goUrl('/jspController/ExpertRegisterChinese');">
                     医生加盟
                 </li>
 
@@ -281,71 +293,123 @@
 
             <div id="gencontent" class="general"><!--general!-->
                 <%--Todo 页面内容--%>
-                <div>
-                    <input type="hidden" id="pageNumber3" name="pageNumber3" value="1">
+                <article class="login-con">
+                    <blockquote id="form">
+                        <!-- 账号密码登录 -->
+                        <form name="ifrm" id="ifrm" method="post">
+                            <blockquote id="tab1" class="">
 
-                    <a href="/userController/selectUserByExamine">只显示未处理用户</a>
+                                <style>
+                                    input::-webkit-input-placeholder { /* WebKit browsers 适配谷歌 */
+                                        color: #04092c;
+                                    }
 
-                </div>
+                                    input:-moz-placeholder { /* Mozilla Firefox 4 to 18 适配火狐 */
+                                        color: #04092c;
+                                    }
 
-                <br>
-                <div id="cla4"></div>
+                                    input::-moz-placeholder { /* Mozilla Firefox 19+ 适配火狐 */
+                                        color: #04092c;
+                                    }
 
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th style="width: 60px">用户名</th>
-                        <th style="width: 240px;">病情描述</th>
+                                    input:-ms-input-placeholder { /* Internet Explorer 10+  适配ie*/
+                                        color: #04092c;
+                                    }
+                                </style>
 
-                        <th style="width: 100px">手机号</th>
-                        <th style="width: 140px;padding-left: 20px">邮箱</th>
-                        <th style="width: 80px;padding-left: 60px">操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <c:forEach items="${users}" var="user">
-                        <tr>
-                            <td style="width: 60px">${user.name}</td>
-                            <td style="width: 240px;padding-left: 10px">${user.description}</td>
-                            <td style="width: 100px">${user.telephone}</td>
-                            <td style="width: 140px;padding-left: 20px">${user.email}</td>
-
-                            <td style="width: 80px;padding-left: 60px">
-                                <a href="/userController/selectUser1?name=${user.name}&email=${user.email}">查看详情</a>
-                            </td>
-                        </tr>
-
-                    </c:forEach>
-
-                    </tbody>
-
-                </table>
-
-                <div style="float: right;font-size: 18px;">
+                                <div class="pad10B">
+                                    <div class="clrfix">
+                                        <div class="input-box">
+                                            <input id="expertName" name="expertName" type="text" onkeydown="KeyDown()"
+                                                   value=""
+                                                   class="inputNumber AppCheck nocheck data" autocomplete="off"
+                                                   placeholder="请输入姓名">
+                                            <div class="jyts-err">
+                                                <div><span class="username-err"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
-                    <tr>
-                        <td colspan="10">
-                            当前${pageNumber}/${totalPage }页&nbsp;&nbsp;
+                                <div class="pad10B">
+                                    <div class="clrfix">
+                                        <div class="input-box">
+                                            <input id="expertId" name="expertId" type="text" onkeydown="KeyDown()"
+                                                   value=""
+                                                   class="inputNumber AppCheck nocheck data" autocomplete="off"
+                                                   placeholder="请输入执业编号">
+                                            <div class="jyts-err">
+                                                <div><span class="username-err"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <c:if test="${pageNumber ne 1}">
-                                <a href="/userController/selectUser?pageNumber=1">首页</a>
-                                <a href="/userController/selectUser?pageNumber=${pageNumber-1}">上一页 </a>
-                            </c:if>
+                                <div class="pad10B">
+                                    <div class="clrfix">
+                                        <div class="input-box">
+                                            <input id="expertAddress" name="expertAddress" type="text"
+                                                   onkeydown="KeyDown()" value=""
+                                                   class="inputNumber AppCheck nocheck data" autocomplete="off"
+                                                   placeholder="请输入地址">
+                                            <div class="jyts-err">
+                                                <div><span class="username-err"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <c:if test="${pageNumber ne totalPage}">
-                                <a href="/userController/selectUser?pageNumber=${pageNumber+1}">下一页 </a>
-                                <a href="/userController/selectUser?pageNumber=${totalPage}">末页</a>
-                            </c:if>
+                                <div class="pad10B">
+                                    <div class="clrfix">
+                                        <div class="input-box">
+                                            <input id="expertExcel" name="expertExcel" type="text" onkeydown="KeyDown()"
+                                                   value=""
+                                                   class="inputNumber AppCheck nocheck data plac" autocomplete="off"
+                                                   placeholder="请输入擅长范围">
+                                            <div class="jyts-err">
+                                                <div><span class="username-err"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        </td>
-                    </tr>
+                                <div class="pad10B">
+                                    <div class="clrfix">
+                                        <div class="input-box">
+                                            <input id="expertTel" name="expertTel" type="text" onkeydown="KeyDown()"
+                                                   value=""
+                                                   class="inputNumber AppCheck nocheck data" autocomplete="off"
+                                                   placeholder="请输入联系方式">
+                                            <div class="jyts-err">
+                                                <div><span class="username-err"></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                </div>
+
+                                <div id="divUser" style="width: 100%;color: red;font-size:18px;text-align: center">
+
+                                </div>
+
+                                <div id="divAll" style="width: 100%;color: red;font-size:18px;text-align: center">
+
+                                </div>
 
 
+                                <div>
+                                    <input type="reset" value="重置">
+                                    <input type="button" class="but" id="user-btn1" value="提交" onclick="Join()">
+                                </div>
+
+
+                            </blockquote>
+                        </form>
+                    </blockquote>
+                </article>
             </div><!--End general!-->
+
         </div>
         <div class="clear"></div>
     </div>

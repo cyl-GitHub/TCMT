@@ -111,7 +111,7 @@ public class JspController {
     //医生注册
     @RequestMapping(value = "ExpertRegisterChinese")
     public String ExpertRegisterChinese() {
-        return "ExpertRegisterChinese";
+        return "admin/Administration2";
     }
 
     @RequestMapping(value = "ExpertRegisterEnglish")

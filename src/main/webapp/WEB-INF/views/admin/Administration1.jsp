@@ -262,6 +262,10 @@
                     医生管理
                 </li>
 
+                <li class="level2-d" onclick="goUrl('/jspController/ExpertRegisterChinese');">
+                    医生加盟
+                </li>
+
             </ul>
         </div>
 
