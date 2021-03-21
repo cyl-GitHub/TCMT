@@ -57,7 +57,7 @@ public class ExpertController {
 
         if (pageNumber != null)
             pageNumber1 = pageNumber;
-        int pageCount = 3;
+        int pageCount = 6;
         int totalPage;
         Admin adminLogin = (Admin) session.getAttribute("adminLogin");
         Integer count = expertService.selectCount();
@@ -128,7 +128,7 @@ public class ExpertController {
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("adminLogin", adminLogin.getId());
 
-        return "admin/ExpertAdministration";
+        return "admin/ExpertAdministration1";
     }
 
 

@@ -284,7 +284,7 @@
                 <div >
                     <input type="hidden" id="pageNumber3" name="pageNumber3" value="1">
 
-                    <a href="/expertController/selectExpertByExamine">只显示未审核医师</a>
+                    <a href="/expertController/selectExpert">显示所有医师</a>
 
                 </div>
 
@@ -330,13 +330,13 @@
                             当前${pageNumber}/${totalPage }页&nbsp;&nbsp;
 
                             <c:if test="${pageNumber ne 1}">
-                                <a href="/expertController/selectExpert?pageNumber=1">首页</a>
-                                <a href="/expertController/selectExpert?pageNumber=${pageNumber-1}">上一页 </a>
+                                <a href="/expertController/selectExpertByExamine?pageNumber=1">首页</a>
+                                <a href="/expertController/selectExpertByExamine?pageNumber=${pageNumber-1}">上一页 </a>
                             </c:if>
 
                             <c:if test="${pageNumber ne totalPage}">
-                                <a href="/expertController/selectExpert?pageNumber=${pageNumber+1}">下一页 </a>
-                                <a href="/expertController/selectExpert?pageNumber=${totalPage}">末页</a>
+                                <a href="/expertController/selectExpertByExamine?pageNumber=${pageNumber+1}">下一页 </a>
+                                <a href="/expertController/selectExpertByExamine?pageNumber=${totalPage}">末页</a>
                             </c:if>
 
                         </td>
