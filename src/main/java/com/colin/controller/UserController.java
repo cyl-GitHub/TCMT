@@ -168,4 +168,11 @@ public class UserController {
         return "user/showUser";
     }
 
+
+    @RequestMapping("userDelete")
+    public String userDelete(@Param("name") String name, @Param("email") String email, Model model, HttpSession session) {
+        userService.userDelete(name, email);
+        return "forward:/userController/selectUser?pageNumber=0";
+    }
+
 }

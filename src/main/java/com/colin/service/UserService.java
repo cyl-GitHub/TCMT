@@ -21,4 +21,6 @@ public interface UserService {
 
     void doExamine(String name, String email);
 
+    void userDelete(String name, String email);
+
 }

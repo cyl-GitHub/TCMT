@@ -25,4 +25,6 @@ public interface ExpertMapper {
 
     void doExamine(Integer expertId);
 
+    void expertDelete(Integer expertId);
+
 }

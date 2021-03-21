@@ -17,6 +17,9 @@
     <update id="doExamine">
         update user set user_examine = "1" where user_name = #{param1} and user_email = #{param2}
     </update>
+    <delete id="userDelete">
+         delete from user where user_name = #{param1} and user_email = #{param2}
+    </delete>
     <select id="selectUser" resultMap="userMap">
         select user_email,user_name,user_description,user_address,user_telephone  from user where  user_email = #{email} 
     </select>

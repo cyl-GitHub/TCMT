@@ -154,4 +154,10 @@ public class ExpertController {
     }
 
 
+    @RequestMapping("expertDelete")
+    public String expertDelete(@Param("expertId") Integer expertId, Model model, HttpSession session) {
+        expertService.expertDelete(expertId);
+        return "forward:/expertController/selectExpert?pageNumber=0";
+    }
+
 }

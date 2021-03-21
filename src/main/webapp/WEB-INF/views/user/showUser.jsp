@@ -303,6 +303,8 @@
                     <br>
                     已处理
                 </c:if>
+                <br>
+                <a href="/userController/userDelete?name=${user1.name}&email=${user1.email}">删除</a>
 
                 <br>
                 <div id="cla4"></div>

@@ -17,6 +17,9 @@
     <update id="doExamine">
           update expert set expert_examine = "1" where expert_id = #{param1}
     </update>
+    <delete id="expertDelete">
+        delete from expert where expert_id = #{param1}
+    </delete>
     <select id="selectExpert" resultMap="expertMap">
         select expert_id,expert_name,expert_address,expert_excel,expert_telephone,expert_examine
         from  expert where expert_id = #{expertId}

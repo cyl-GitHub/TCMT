@@ -55,5 +55,10 @@ public class UserServiceImpl implements UserService {
         userMapper.doExamine(name, email);
     }
 
+    @Override
+    public void userDelete(String name, String email) {
+        userMapper.userDelete(name, email);
+    }
+
 
 }

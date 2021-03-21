@@ -55,4 +55,9 @@ public class ExpertServiceImpl implements ExpertService {
         expertMapper.doExamine(expertId);
     }
 
+    @Override
+    public void expertDelete(Integer expertId) {
+        expertMapper.expertDelete(expertId);
+    }
+
 }

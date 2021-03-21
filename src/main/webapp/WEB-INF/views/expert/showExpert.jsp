@@ -254,11 +254,11 @@
     <div class="container-padding pg-container ">
         <div class="pg-col-l">
             <ul class="nav-left">
-                <li class="current" onclick="goUrl('/userController/selectUser');">
+                <li class="level2-d" onclick="goUrl('/userController/selectUser');">
                     用户管理
                 </li>
 
-                <li class="level2-d" onclick="goUrl('/expertController/selectExpert');">
+                <li class="current" onclick="goUrl('/expertController/selectExpert');">
                     医生管理
                 </li>
 
@@ -303,10 +303,10 @@
                     <br>
                     已处理
                 </c:if>
-
+                <br>
+                <a href="/expertController/expertDelete?expertId=${expert1.expertId}">删除</a>
                 <br>
                 <div id="cla4"></div>
-
 
 
             </div><!--End general!-->

@@ -25,4 +25,6 @@ public interface ExpertService {
 
     void doExamine(Integer expertId);
 
+    void expertDelete(Integer expertId);
+
 }

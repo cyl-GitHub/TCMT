@@ -24,4 +24,6 @@ public interface UserMapper {
 
     void doExamine(String name, String email);
 
+    void userDelete(String name, String email);
+
 }
