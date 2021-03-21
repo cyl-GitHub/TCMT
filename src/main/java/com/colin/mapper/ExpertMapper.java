@@ -21,4 +21,8 @@ public interface ExpertMapper {
 
     List<Expert> selectExpertExamine(int i, int pageCount);
 
+    Expert selectExpert1(Integer expertId);
+
+    void doExamine(Integer expertId);
+
 }

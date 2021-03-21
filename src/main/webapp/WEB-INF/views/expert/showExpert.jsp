@@ -281,24 +281,24 @@
 
             <div id="gencontent" class="general"><!--general!-->
                 <%--Todo 页面内容--%>
-                用户名:${user1.name}
+                专家姓名:${expert1.expertName}
                 <br>
-                病情描述:${user1.description}
+                执业编号:${expert1.expertId}
                 <br>
-                手机号:${user1.telephone}
+                所在地:${expert1.expertAddress}
                 <br>
-                邮箱:${user1.email}
+                医学擅长:${expert1.expertExcel}
                 <br>
-                地址:${user1.address}
+                联系方式:${expert1.expertTelephone}
                 <br>
                 是否处理:
-                <c:if test="${user1.examine == 0}">
+                <c:if test="${expert1.examine == 0}">
                     否
                     <br>
-                    <a href="/userController/doExamine?name=${user1.name}&email=${user1.email}">处理</a>
+                    <a href="/expertController/doExamine?expertId=${expert1.expertId}">处理</a>
 
                 </c:if>
-                <c:if test="${user1.examine == 1}">
+                <c:if test="${expert1.examine == 1}">
                     是
                     <br>
                     已处理

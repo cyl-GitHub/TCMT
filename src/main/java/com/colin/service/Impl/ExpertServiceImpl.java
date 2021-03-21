@@ -1,10 +1,7 @@
 package com.colin.service.Impl;
 
-import com.colin.bean.Admin;
 import com.colin.bean.Expert;
-import com.colin.mapper.AdminMapper;
 import com.colin.mapper.ExpertMapper;
-import com.colin.service.AdminService;
 import com.colin.service.ExpertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +41,18 @@ public class ExpertServiceImpl implements ExpertService {
 
     @Override
     public List<Expert> selectExpertExamine(int i, int pageCount) {
-        return expertMapper.selectExpertExamine( i, pageCount);
+        return expertMapper.selectExpertExamine(i, pageCount);
+    }
+
+    @Override
+    public Expert selectExpert1(Integer expertId) {
+
+        return expertMapper.selectExpert1(expertId);
+    }
+
+    @Override
+    public void doExamine(Integer expertId) {
+        expertMapper.doExamine(expertId);
     }
 
 }

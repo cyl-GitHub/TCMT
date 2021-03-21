@@ -14,6 +14,9 @@
         insert into expert(expert_id,expert_name,expert_address,expert_excel,expert_telephone)
         values(#{expertId},#{expertName},#{expertAddress},#{expertExcel},#{expertTelephone})
     </insert>
+    <update id="doExamine">
+          update expert set expert_examine = "1" where expert_id = #{param1}
+    </update>
     <select id="selectExpert" resultMap="expertMap">
         select expert_id,expert_name,expert_address,expert_excel,expert_telephone,expert_examine
         from  expert where expert_id = #{expertId}
@@ -30,7 +33,11 @@
          select count(*) from expert where expert_examine = "0";
     </select>
     <select id="selectExpertExamine" resultMap="expertMap">
- select expert_id,expert_name,expert_address,expert_excel,expert_telephone,expert_examine from expert where expert_examine = "0" limit #{param1},#{param2};
+        select expert_id,expert_name,expert_address,expert_excel,expert_telephone,expert_examine from expert where expert_examine = "0" limit #{param1},#{param2};
     </select>
+    <select id="selectExpert1" resultMap="expertMap">
+          select expert_id,expert_name,expert_address,expert_excel,expert_telephone,expert_examine from expert where  expert_id = #{param1}
+    </select>
+
 
 </mapper>

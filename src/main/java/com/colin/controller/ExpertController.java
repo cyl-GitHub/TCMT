@@ -132,6 +132,26 @@ public class ExpertController {
     }
 
 
+    @RequestMapping("selectExpert1")
+    public String selectExpert1(@Param("expertId") Integer expertId, Model model, HttpSession session) {
+
+        Expert expert = expertService.selectExpert1(expertId);
+
+        model.addAttribute("expert1", expert);
+
+        return "expert/showExpert";
+    }
+
+    @RequestMapping("doExamine")
+    public String doExamine(@Param("expertId") Integer expertId, Model model, HttpSession session) {
+
+        expertService.doExamine(expertId);
+        Expert expert = expertService.selectExpert1(expertId);
+
+        model.addAttribute("expert1", expert);
+
+        return "expert/showExpert";
+    }
 
 
 }

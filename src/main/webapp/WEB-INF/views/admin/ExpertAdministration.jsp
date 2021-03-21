@@ -311,9 +311,9 @@
                             <td style="width: 100px">${expert.expertExcel}</td>
                             <td style="width: 140px;padding-left: 20px">${expert.expertTelephone}</td>
 
-                            <%--<td style="width: 80px;padding-left: 60px">--%>
-                                <%--<a href="/userController/selectUser1?name=${user.name}&email=${user.email}">查看详情</a>--%>
-                            <%--</td>--%>
+                            <td style="width: 80px;padding-left: 60px">
+                                <a href="/expertController/selectExpert1?expertId=${expert.expertId}">查看详情</a>
+                            </td>
                         </tr>
 
                     </c:forEach>
