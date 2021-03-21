@@ -2,7 +2,6 @@ package com.colin.controller;
 
 import com.colin.bean.Admin;
 import com.colin.bean.Expert;
-import com.colin.bean.User;
 import com.colin.service.ExpertService;
 import com.colin.util.ParamCheck;
 import org.apache.ibatis.annotations.Param;
@@ -88,8 +87,51 @@ public class ExpertController {
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("adminLogin", adminLogin.getId());
 
-        return "admin/Administration1";
+        return "admin/ExpertAdministration";
     }
+
+
+    @RequestMapping("selectExpertByExamine")
+    public String selectExpertByExamine(@Param("pageNumber") Integer pageNumber, Model model, HttpSession session) {
+
+        int pageNumber1 = 1;
+
+        if (pageNumber != null)
+            pageNumber1 = pageNumber;
+        int pageCount = 6;
+        int totalPage;
+        Admin adminLogin = (Admin) session.getAttribute("adminLogin");
+        Integer count = expertService.selectCountExamine();
+
+        if (count % pageCount == 0) {
+            totalPage = count / pageCount;
+        } else {
+            totalPage = count / pageCount + 1;
+        }
+
+        if (pageNumber1 <= 0) {
+            pageNumber1 = 1;
+        } else if (pageNumber1 > totalPage) {
+            pageNumber1 = totalPage;
+        }
+
+        if (pageNumber1 < 1) {
+            pageNumber1 = 1;
+        }
+        if (totalPage < 1) {
+            totalPage = 1;
+        }
+
+        List<Expert> experts = expertService.selectExpertExamine((pageNumber1 - 1) * pageCount, pageCount);
+        model.addAttribute("pageNumber", pageNumber1);
+        model.addAttribute("experts", experts);
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("adminLogin", adminLogin.getId());
+
+        return "admin/ExpertAdministration";
+    }
+
+
 
 
 }

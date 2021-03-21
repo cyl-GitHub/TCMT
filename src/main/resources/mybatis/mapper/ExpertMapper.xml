@@ -14,7 +14,6 @@
         insert into expert(expert_id,expert_name,expert_address,expert_excel,expert_telephone)
         values(#{expertId},#{expertName},#{expertAddress},#{expertExcel},#{expertTelephone})
     </insert>
-
     <select id="selectExpert" resultMap="expertMap">
         select expert_id,expert_name,expert_address,expert_excel,expert_telephone,expert_examine
         from  expert where expert_id = #{expertId}
@@ -26,6 +25,12 @@
     <select id="selectAllExpert" resultMap="expertMap">
          select expert_id,expert_name,expert_address,expert_excel,expert_telephone,expert_examine
          from expert;
+    </select>
+    <select id="selectCountExamine" resultType="java.lang.Integer">
+         select count(*) from expert where expert_examine = "0";
+    </select>
+    <select id="selectExpertExamine" resultMap="expertMap">
+ select expert_id,expert_name,expert_address,expert_excel,expert_telephone,expert_examine from expert where expert_examine = "0" limit #{param1},#{param2};
     </select>
 
 </mapper>

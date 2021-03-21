@@ -37,4 +37,14 @@ public class ExpertServiceImpl implements ExpertService {
         return expertMapper.selectAllExpert(i, pageCount);
     }
 
+    @Override
+    public Integer selectCountExamine() {
+        return expertMapper.selectCountExamine();
+    }
+
+    @Override
+    public List<Expert> selectExpertExamine(int i, int pageCount) {
+        return expertMapper.selectExpertExamine( i, pageCount);
+    }
+
 }

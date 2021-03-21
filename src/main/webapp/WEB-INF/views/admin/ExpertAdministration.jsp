@@ -254,11 +254,11 @@
     <div class="container-padding pg-container ">
         <div class="pg-col-l">
             <ul class="nav-left">
-                <li class="current" onclick="goUrl('/userController/selectUser');">
+                <li class="level2-d " onclick="goUrl('/userController/selectUser');">
                     用户管理
                 </li>
 
-                <li class="level2-d" onclick="goUrl('/jspController/Administration1');">
+                <li class="current" onclick="goUrl('/expertController/selectExpert');">
                     医生管理
                 </li>
 
@@ -281,32 +281,68 @@
 
             <div id="gencontent" class="general"><!--general!-->
                 <%--Todo 页面内容--%>
-                用户名:${user1.name}
-                <br>
-                病情描述:${user1.description}
-                <br>
-                手机号:${user1.telephone}
-                <br>
-                邮箱:${user1.email}
-                <br>
-                地址:${user1.address}
-                <br>
-                是否处理:
-                <c:if test="${user1.examine == 0}">
-                    否
-                    <br>
-                    <a href="/userController/doExamine?name=${user1.name}&email=${user1.email}">处理</a>
+                <div >
+                    <input type="hidden" id="pageNumber3" name="pageNumber3" value="1">
 
-                </c:if>
-                <c:if test="${user1.examine == 1}">
-                    是
-                    <br>
-                    已处理
-                </c:if>
+                    <a href="/userController/selectUserByExamine">只显示未审核医师</a>
+
+                </div>
 
                 <br>
                 <div id="cla4"></div>
 
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="width: 60px">执业编号</th>
+                        <th style="width: 240px;">姓名</th>
+
+                        <th style="width: 100px">擅长</th>
+                        <th style="width: 140px;padding-left: 20px">手机号</th>
+                        <th style="width: 80px;padding-left: 60px">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <c:forEach items="${experts}" var="expert">
+                        <tr>
+                            <td style="width: 60px">${expert.expertId}</td>
+                            <td style="width: 240px;padding-left: 10px">${expert.expertName}</td>
+                            <td style="width: 100px">${expert.expertExcel}</td>
+                            <td style="width: 140px;padding-left: 20px">${expert.expertTelephone}</td>
+
+                            <%--<td style="width: 80px;padding-left: 60px">--%>
+                                <%--<a href="/userController/selectUser1?name=${user.name}&email=${user.email}">查看详情</a>--%>
+                            <%--</td>--%>
+                        </tr>
+
+                    </c:forEach>
+
+                    </tbody>
+
+                </table>
+
+                <div style="float: right;font-size: 18px;">
+
+
+                    <tr>
+                        <td colspan="10">
+                            当前${pageNumber}/${totalPage }页&nbsp;&nbsp;
+
+                            <c:if test="${pageNumber ne 1}">
+                                <a href="/userController/selectUser?pageNumber=1">首页</a>
+                                <a href="/userController/selectUser?pageNumber=${pageNumber-1}">上一页 </a>
+                            </c:if>
+
+                            <c:if test="${pageNumber ne totalPage}">
+                                <a href="/userController/selectUser?pageNumber=${pageNumber+1}">下一页 </a>
+                                <a href="/userController/selectUser?pageNumber=${totalPage}">末页</a>
+                            </c:if>
+
+                        </td>
+                    </tr>
+
+                </div>
 
 
             </div><!--End general!-->

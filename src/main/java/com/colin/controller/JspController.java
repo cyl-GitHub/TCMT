@@ -7,13 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.*;
-import javax.servlet.descriptor.JspConfigDescriptor;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.*;
 
 @Controller
@@ -111,7 +105,7 @@ public class JspController {
     //医生注册
     @RequestMapping(value = "ExpertRegisterChinese")
     public String ExpertRegisterChinese() {
-        return "admin/Administration2";
+        return "admin/ExpertJoinAdministration";
     }
 
     @RequestMapping(value = "ExpertRegisterEnglish")
@@ -140,13 +134,13 @@ public class JspController {
     //用户管理
     @RequestMapping(value = "Administration")
     public String Administration() {
-        return "admin/Administration";
+        return "admin/UserAdministration";
     }
 
     //医生管理
     @RequestMapping(value = "Administration1")
     public String Administration1() {
-        return "admin/Administration1";
+        return "admin/ExpertAdministration";
     }
 
 

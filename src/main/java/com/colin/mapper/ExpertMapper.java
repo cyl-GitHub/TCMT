@@ -1,6 +1,5 @@
 package com.colin.mapper;
 
-import com.colin.bean.Admin;
 import com.colin.bean.Expert;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,5 +16,9 @@ public interface ExpertMapper {
     Integer selectCount();
 
     List<Expert> selectAllExpert(int i, int pageCount);
+
+    Integer selectCountExamine();
+
+    List<Expert> selectExpertExamine(int i, int pageCount);
 
 }

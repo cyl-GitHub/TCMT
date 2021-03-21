@@ -3,7 +3,6 @@ package com.colin.controller;
 import com.colin.bean.Admin;
 import com.colin.bean.User;
 import com.colin.service.UserService;
-import com.colin.util.MD5;
 import com.colin.util.ParamCheck;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sun.security.util.Password;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -75,7 +71,7 @@ public class UserController {
 
         if (pageNumber != null)
             pageNumber1 = pageNumber;
-        int pageCount = 3;
+        int pageCount = 6;
         int totalPage;
         Admin adminLogin = (Admin) session.getAttribute("adminLogin");
         Integer count = userService.selectCount();
@@ -105,7 +101,7 @@ public class UserController {
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("adminLogin", adminLogin.getId());
 
-        return "admin/Administration";
+        return "admin/UserAdministration";
     }
 
 
@@ -116,7 +112,7 @@ public class UserController {
 
         if (pageNumber != null)
             pageNumber1 = pageNumber;
-        int pageCount = 3;
+        int pageCount = 6;
         int totalPage;
         Admin adminLogin = (Admin) session.getAttribute("adminLogin");
         Integer count = userService.selectCountExamine();
@@ -146,7 +142,7 @@ public class UserController {
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("adminLogin", adminLogin.getId());
 
-        return "admin/Administration";
+        return "admin/UserAdministration1";
     }
 
 

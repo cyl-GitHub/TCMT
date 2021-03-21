@@ -17,4 +17,8 @@ public interface ExpertService {
 
     List<Expert> selectAllExpert(int i, int pageCount);
 
+    Integer selectCountExamine();
+
+    List<Expert> selectExpertExamine(int i, int pageCount);
+
 }
