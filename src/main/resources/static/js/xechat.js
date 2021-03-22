@@ -258,14 +258,13 @@ function sendToChatRoom() {
 
 
 function flushMessage() {
-    var adminId = $("#adminId").text();
     $.ajax({
         url: "/consultationController/flushMessage", dataType: "json",
         type: "POST",
         contentType: "application/json;charset=utf-8",
         //向后端传输的数据
         data: JSON.stringify({
-            adminId: adminId
+            adminId: 1
         }),
         //处理后端返回的数据
         success: function (data) {

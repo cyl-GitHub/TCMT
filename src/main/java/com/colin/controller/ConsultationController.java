@@ -69,6 +69,14 @@ public class ConsultationController {
             application.setAttribute("messageQueue", messageQueue);
         }
 
+
+        if (application.getAttribute("adminMessageQueue") == null) {
+            //消息列表 客服id  消息详情
+            HashMap<String, Queue<Message>> adminMessageQueue = new HashMap<>();
+            application.setAttribute("adminMessageQueue", adminMessageQueue);
+        }
+
+
         Admin adminLogin = (Admin) session.getAttribute("adminLogin");
 
         HashMap<String, String> admin = (HashMap<String, String>) application.getAttribute("admin");
@@ -90,12 +98,22 @@ public class ConsultationController {
 
         //当游客无id时
         if (message.getUserId() == null || message.getUserId().equals("")) {
-            int len = 100 + user.size();
-            for (int i = 100; i <= len; i++) {
-                if (!user.containsKey(String.valueOf(i))) {
-                    message.setUserId(String.valueOf(i));
-                    user.put(String.valueOf(i), null);
-                    break;
+
+            User userLogin = (User) session.getAttribute("userLogin");
+
+            if (userLogin != null) {
+                user.put(String.valueOf(userLogin.getId()), null);
+            } else {
+                int len = 10000 + user.size();
+                for (int i = 10000; i <= len; i++) {
+                    if (!user.containsKey(String.valueOf(i))) {
+                        message.setUserId(String.valueOf(i));
+                        user.put(String.valueOf(i), null);
+                        User user1 = new User();
+                        user1.setId(String.valueOf(i));
+                        session.setAttribute("userLogin", user1);
+                        break;
+                    }
                 }
             }
         }
@@ -139,6 +157,9 @@ public class ConsultationController {
 
         //将处理好的消息放到application中
         HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
+        HashMap<String, Queue<Message>> adminMessageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("adminMessageQueue");
+
+
         Queue<Message> messages;
         if (!messageQueue.containsKey(message.getAdminId())) {
             messages = new LinkedList<>();
@@ -150,6 +171,7 @@ public class ConsultationController {
 
         if (!messageQueue.containsKey(message.getAdminId())) {
             messageQueue.put(message.getAdminId(), messages);
+            adminMessageQueue.put(message.getAdminId(), messages);
         }
 
         return map;
@@ -184,6 +206,41 @@ public class ConsultationController {
     }
 
 
+    @RequestMapping("/adminFlushMessage")
+    @ResponseBody
+    public Map adminFlushMessage(@RequestBody Message message, HttpSession session) {
+
+        Admin admin = (Admin) session.getAttribute("adminLogin");
+        if (admin == null) {
+            return null;
+        }
+
+        String adminId = admin.getId();
+
+        HashMap<String, Queue<Message>> adminMessageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("adminMessageQueue");
+
+        if (!adminMessageQueue.containsKey(adminId)) {
+            return null;
+        }
+
+        Queue<Message> messages = adminMessageQueue.get(adminId);
+
+        Map<String, Object> map = new HashMap();
+
+        map.put("messages", messages);
+        String userId = "-1";
+        if (!messages.isEmpty()) {
+            userId = messages.peek().getUserId();
+        }
+        map.put("userId", userId);
+
+        Queue<Message> messages1 = new LinkedList();
+        adminMessageQueue.put(adminId, messages1);
+
+        return map;
+    }
+
+
     @RequestMapping("/exit")
     @ResponseBody
     public Map exit(@RequestBody Message message, HttpSession session) {
@@ -197,6 +254,7 @@ public class ConsultationController {
         HashMap admin = (HashMap) application.getAttribute("admin");
         HashMap<String, User> user = (HashMap) application.getAttribute("user");
         HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
+        HashMap<String, Queue<Message>> adminMessageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("adminMessageQueue");
 
         if (admin.containsKey(message.getAdminId())) {
             admin.put(message.getAdminId(), "等待中");
@@ -208,6 +266,7 @@ public class ConsultationController {
 
         if (messageQueue.containsKey(message.getAdminId())) {
             messageQueue.remove(message.getAdminId());
+            adminMessageQueue.remove(message.getAdminId());
         }
 
         return null;
