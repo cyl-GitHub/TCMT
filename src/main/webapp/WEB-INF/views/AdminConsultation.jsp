@@ -12,14 +12,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TCMT在线咨询</title>
-    <script src="/static/js/xechat.js"></script>
+    <script src="/static/js/adminxechat.js"></script>
     <link rel="stylesheet" type="text/css"
           href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <script>
-        var t2 = window.setInterval("flushMessage()", 300);
+        var t2 = window.setInterval("adminFlushMessage()", 300);
     </script>
 
 </head>
@@ -27,8 +27,6 @@
 <div id="login" style="display: none">
     <div><h3 class="text-center">TCMT咨询登录</h3></div>
     <div></div>
-
-    <span id="userId" style="display: none"></span>
 
     <div class="login_fm">
         <form>
@@ -57,7 +55,7 @@
         <a href="#panel-left" data-iconpos="notext"
            class="col-xs-2 text-right"> </a>
         <a class="text-center col-xs-8" target="_blank">咨询服务
-            （<font color="orange" id="adminId"></font>）</a>
+            （<font color="orange" id="userId"></font>）</a>
 
         <div class="dropdown settings">
             <i class="glyphicon glyphicon-cog dropdown-toggle" id="settings" data-toggle="dropdown"></i>

@@ -273,4 +273,30 @@ public class ConsultationController {
     }
 
 
+    @RequestMapping("/adminExit")
+    @ResponseBody
+    public Map adminExit(@RequestBody Message message, HttpSession session) {
+
+        HashMap admin = (HashMap) application.getAttribute("admin");
+        HashMap<String, User> user = (HashMap) application.getAttribute("user");
+        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
+        HashMap<String, Queue<Message>> adminMessageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("adminMessageQueue");
+
+        if (admin.containsKey(message.getAdminId())) {
+            admin.put(message.getAdminId(), "等待中");
+        }
+
+        if (user.containsKey(message.getUserId())) {
+            user.remove(message.getUserId());
+        }
+
+        if (messageQueue.containsKey(message.getAdminId())) {
+            messageQueue.remove(message.getAdminId());
+            adminMessageQueue.remove(message.getAdminId());
+        }
+
+        return null;
+    }
+
+
 }

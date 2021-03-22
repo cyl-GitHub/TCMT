@@ -336,9 +336,9 @@
                 <%--医生加盟--%>
                 <%--</li>--%>
 
-                <li class="level2-d" onclick="goUrl('/jspController/UserLoginChinese');">
-                用户信息
-                </li>
+                <%--<li class="level2-d" onclick="goUrl('/jspController/UserLoginChinese');">--%>
+                <%--用户信息--%>
+                <%--</li>--%>
 
             </ul>
         </div>
