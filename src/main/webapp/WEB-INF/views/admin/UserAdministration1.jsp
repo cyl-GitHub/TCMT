@@ -266,6 +266,10 @@
                     医生加盟
                 </li>
 
+                <li class="level2-d" onclick="goUrl('/consultationController/AdminConsultation');">
+                    医生加盟
+                </li>
+
             </ul>
         </div>
 

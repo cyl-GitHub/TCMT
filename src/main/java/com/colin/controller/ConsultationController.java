@@ -1,11 +1,10 @@
 package com.colin.controller;
 
+import com.colin.bean.Admin;
 import com.colin.bean.Message;
 import com.colin.bean.User;
 
-import com.sun.glass.ui.Application;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,31 +24,59 @@ public class ConsultationController {
     //信息咨询
     @RequestMapping(value = "Consultation")
     public String Consultation() {
+        if (application.getAttribute("admin") == null) {
+            //客服列表
+            HashMap<String, String> admin = new HashMap<>();
+            admin.put("121", "等待中");
+            application.setAttribute("admin", admin);
+        }
 
-//        if (session.getAttribute("admin") == null) {
-//            //客服列表
-//            HashMap<String, String> admin = new HashMap<>();
-//            admin.put("121", "等待中");
-//            session.setAttribute("admin", admin);
-//        }
-//
-//
-//        if (session.getAttribute("user") == null) {
-//            //用户列表
-//            HashMap<String, User> user = new HashMap<>();
-//            session.setAttribute("user", user);
-//        }
-//
-//        if (session.getAttribute("messageQueue") == null) {
-//            //消息列表 客服id  消息详情
-//            HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
-//            session.setAttribute("messageQueue", messageQueue);
-//        }
 
+        if (application.getAttribute("user") == null) {
+            //用户列表
+            HashMap<String, User> user = new HashMap<>();
+            application.setAttribute("user", user);
+        }
+
+        if (application.getAttribute("messageQueue") == null) {
+            //消息列表 客服id  消息详情
+            HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
+            application.setAttribute("messageQueue", messageQueue);
+        }
 
         return "Consultation";
     }
 
+    //信息咨询 管理员
+    @RequestMapping(value = "AdminConsultation")
+    public String AdminConsultation(HttpSession session) {
+        if (application.getAttribute("admin") == null) {
+            //客服列表
+            HashMap<String, String> admin = new HashMap<>();
+            application.setAttribute("admin", admin);
+        }
+
+
+        if (application.getAttribute("user") == null) {
+            //用户列表
+            HashMap<String, User> user = new HashMap<>();
+            application.setAttribute("user", user);
+        }
+
+        if (application.getAttribute("messageQueue") == null) {
+            //消息列表 客服id  消息详情
+            HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
+            application.setAttribute("messageQueue", messageQueue);
+        }
+
+        Admin adminLogin = (Admin) session.getAttribute("adminLogin");
+
+        HashMap<String, String> admin = (HashMap<String, String>) application.getAttribute("admin");
+
+        admin.put(adminLogin.getId(), "等待中");
+
+        return "AdminConsultation";
+    }
 
     //用户发送消息
     @RequestMapping("/userSend")
@@ -185,7 +212,6 @@ public class ConsultationController {
 
         return null;
     }
-
 
 
 }

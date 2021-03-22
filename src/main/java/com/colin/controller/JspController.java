@@ -17,32 +17,32 @@ public class JspController {
     private ServletContext application;
 
     //主页
-    @RequestMapping(value = "beginSession")
-    public String beginSession(HttpSession session) {
-
-        if (application.getAttribute("admin") == null) {
-            //客服列表
-            HashMap<String, String> admin = new HashMap<>();
-            admin.put("121", "等待中");
-            application.setAttribute("admin", admin);
-        }
-
-
-        if (application.getAttribute("user") == null) {
-            //用户列表
-            HashMap<String, User> user = new HashMap<>();
-            application.setAttribute("user", user);
-        }
-
-        if (application.getAttribute("messageQueue") == null) {
-            //消息列表 客服id  消息详情
-            HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
-            application.setAttribute("messageQueue", messageQueue);
-        }
-
-
-        return "beginSession";
-    }
+//    @RequestMapping(value = "beginSession")
+//    public String beginSession(HttpSession session) {
+//
+//        if (application.getAttribute("admin") == null) {
+//            //客服列表
+//            HashMap<String, String> admin = new HashMap<>();
+//            admin.put("121", "等待中");
+//            application.setAttribute("admin", admin);
+//        }
+//
+//
+//        if (application.getAttribute("user") == null) {
+//            //用户列表
+//            HashMap<String, User> user = new HashMap<>();
+//            application.setAttribute("user", user);
+//        }
+//
+//        if (application.getAttribute("messageQueue") == null) {
+//            //消息列表 客服id  消息详情
+//            HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
+//            application.setAttribute("messageQueue", messageQueue);
+//        }
+//
+//
+//        return "beginSession";
+//    }
 
 
     //主页

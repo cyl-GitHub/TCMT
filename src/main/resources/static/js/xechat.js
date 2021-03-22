@@ -290,6 +290,39 @@ function flushMessage() {
 }
 
 
+function adminFlushMessage() {
+    var adminId = $("#adminId").text();
+    $.ajax({
+        url: "/consultationController/flushMessage", dataType: "json",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        //向后端传输的数据
+        data: JSON.stringify({
+            adminId: adminId
+        }),
+        //处理后端返回的数据
+        success: function (data) {
+
+            var messages = data.messages;
+
+            if (data != null) {
+                for (var i = 0; i < messages.length; i++) {
+                    showUserMsgList(messages[i]);
+                    if (opendSound) {
+                        // 提示音
+                        beep();
+                    }
+                }
+            }
+        },
+        //处理失败返回的数据
+        error: function (data) {
+
+        }
+    })
+}
+
+
 /**
  * 响应码映射
  * @param date
