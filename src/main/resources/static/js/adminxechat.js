@@ -388,15 +388,6 @@ function showUserMsg(data) {
     var div2 = '<div class="reply-content pr" ' + event + '><span class="arrow">&nbsp;</span>' + showMessage + showImage + '</div></div></li>';
 
     var html = li + a + avatar + span + (data.message.type ? div_me : div) + div2;
-    // var html;
-    //
-    //
-    // if (data.message.type) {
-    //     html = li + a + avatar + span + div + div2;
-    // } else {
-    //     html = li + a + avatar + span + div_me + div2;
-    // }
-
 
     $("#show_content").append(html);
     jumpToLow();
@@ -439,57 +430,6 @@ function trimRight(s) {
     return str;
 }
 
-
-function showUserMsgList(message) {
-
-    var user_avatar = "/static/images/avatar/0.jpeg";
-
-    var isMe = message.type;
-
-    if (isMe) {
-        user_avatar = "/static/images/avatar/0.jpeg";
-    } else {
-        user_avatar = "/static/images/avatar/robot.jpeg";
-    }
-
-    var style_css = isMe ? 'even' : 'odd';
-    var event = isMe ? 'ondblclick=revokeMessage(this)' : '';
-
-    if (message.image == "") {
-        message.image = null;
-    }
-
-
-    var showMessage = trim(message.message);
-    var showImage = message.image == null ? '' : '<div class="show_image"><img src="' + message.image + '"/></div>';
-
-    var li = '<li class=' + style_css + '>';
-    var a = '<a class="user">';
-    var avatar = '<img class="img-responsive avatar_" src=' + user_avatar + '\>';
-    var span = '<span class="user-name">' + message.userId + '</span></a>';
-
-    var div_me = '<div class="reply-content-box"><span class="reply-time"><i class="glyphicon glyphicon-time"></i> '
-        + message.sendTime + '&nbsp;' + '</span>';
-
-    var div = '<div class="reply-content-box"><span class="reply-time">'
-        + '&nbsp;<i class="glyphicon glyphicon-time"></i> ' + message.sendTime + '</span>';
-
-    var div2 = '<div class="reply-content pr" ' + event + '><span class="arrow">&nbsp;</span>' + showMessage + showImage + '</div></div></li>';
-
-    var div1 = div;
-
-    if (isMe) {
-        div1 = div;
-    } else {
-        div1 = div_me;
-    }
-
-    var html = li + a + avatar + span + div1 + div2;
-
-    $("#show_content").append(html);
-    jumpToLow();
-}
-
 function showAdminMsgList(message) {
 
     var user_avatar = "/static/images/avatar/robot.jpeg";
@@ -527,10 +467,10 @@ function showAdminMsgList(message) {
     var div2 = '<div class="reply-content pr" ' + event + '><span class="arrow">&nbsp;</span>' + showMessage + showImage + '</div></div></li>';
 
     var div1 = div;
-    if (!isMe) {
-        div1 = div_me;
-    } else {
+    if (isMe) {
         div1 = div;
+    } else {
+        div1 = div_me;
     }
 
     var html = li + a + avatar + span + div1 + div2;

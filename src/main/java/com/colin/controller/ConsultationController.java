@@ -21,15 +21,12 @@ public class ConsultationController {
     @Autowired
     private ServletContext application;
 
-    //信息咨询
-    @RequestMapping(value = "Consultation")
-    public String Consultation() {
+    public void createApplication() {
         if (application.getAttribute("admin") == null) {
             //客服列表
             HashMap<String, String> admin = new HashMap<>();
             application.setAttribute("admin", admin);
         }
-
 
         if (application.getAttribute("user") == null) {
             //用户列表
@@ -42,40 +39,27 @@ public class ConsultationController {
             HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
             application.setAttribute("messageQueue", messageQueue);
         }
-
-        return "Consultation";
-    }
-
-    //信息咨询 管理员
-    @RequestMapping(value = "AdminConsultation")
-    public String AdminConsultation(HttpSession session) {
-        if (application.getAttribute("admin") == null) {
-            //客服列表
-            HashMap<String, String> admin = new HashMap<>();
-            application.setAttribute("admin", admin);
-        }
-
-
-        if (application.getAttribute("user") == null) {
-            //用户列表
-            HashMap<String, User> user = new HashMap<>();
-            application.setAttribute("user", user);
-        }
-
-        if (application.getAttribute("messageQueue") == null) {
-            //消息列表 客服id  消息详情
-            HashMap<String, Queue<Message>> messageQueue = new HashMap<>();
-            application.setAttribute("messageQueue", messageQueue);
-        }
-
 
         if (application.getAttribute("adminMessageQueue") == null) {
             //消息列表 客服id  消息详情
             HashMap<String, Queue<Message>> adminMessageQueue = new HashMap<>();
             application.setAttribute("adminMessageQueue", adminMessageQueue);
         }
+    }
 
+    //信息咨询
+    @RequestMapping(value = "Consultation")
+    public String Consultation(HttpSession session) {
+        session.setMaxInactiveInterval(60 * 60);
+        createApplication();
+        return "Consultation";
+    }
 
+    //信息咨询 管理员
+    @RequestMapping(value = "AdminConsultation")
+    public String AdminConsultation(HttpSession session) {
+        createApplication();
+        session.setMaxInactiveInterval(60 * 60);
         Admin adminLogin = (Admin) session.getAttribute("adminLogin");
 
         HashMap<String, String> admin = (HashMap<String, String>) application.getAttribute("admin");
@@ -89,6 +73,8 @@ public class ConsultationController {
     @RequestMapping("/userSend")
     @ResponseBody
     public Map userSend(@RequestBody Message message, HttpSession session) {
+        createApplication();
+
         Map<String, Object> map = new HashMap();
         HashMap admin = (HashMap) application.getAttribute("admin");
         HashMap<String, User> user = (HashMap) application.getAttribute("user");
@@ -197,10 +183,17 @@ public class ConsultationController {
     @RequestMapping("/adminSend")
     @ResponseBody
     public Map adminSend(@RequestBody Message message, HttpSession session) {
+        createApplication();
+
         Map<String, Object> map = new HashMap();
         HashMap<String, User> user = (HashMap) application.getAttribute("user");
         Admin adminLogin = (Admin) session.getAttribute("adminLogin");
 
+        if (adminLogin == null) {
+            map.put("result", "请重新登录!");
+            return map;
+
+        }
         message.setAdminId(adminLogin.getId());
         message.setType(false);
 
@@ -249,20 +242,20 @@ public class ConsultationController {
         return map;
     }
 
-
-
-
-
     @RequestMapping("/flushMessage")
     @ResponseBody
     public Map flushMessage(@RequestBody Message message, HttpSession session) {
-
+        createApplication();
         if (message.getAdminId() == null || message.getAdminId().equals("")) {
             return null;
         }
 
         String adminId = message.getAdminId();
         HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
+
+        if (messageQueue == null) {
+            return null;
+        }
 
         if (!messageQueue.containsKey(adminId)) {
             return null;
@@ -284,7 +277,7 @@ public class ConsultationController {
     @RequestMapping("/adminFlushMessage")
     @ResponseBody
     public Map adminFlushMessage(@RequestBody Message message, HttpSession session) {
-
+        createApplication();
         Admin admin = (Admin) session.getAttribute("adminLogin");
         if (admin == null) {
             return null;
@@ -325,6 +318,7 @@ public class ConsultationController {
     @RequestMapping("/exit")
     @ResponseBody
     public Map exit(@RequestBody Message message, HttpSession session) {
+        createApplication();
         if (message.getUserId() == null && message.getUserId().equals("")) {
             return null;
         }
@@ -357,7 +351,7 @@ public class ConsultationController {
     @RequestMapping("/adminExit")
     @ResponseBody
     public Map adminExit(@RequestBody Message message, HttpSession session) {
-
+        createApplication();
         HashMap admin = (HashMap) application.getAttribute("admin");
         HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
         HashMap<String, Queue<Message>> adminMessageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("adminMessageQueue");

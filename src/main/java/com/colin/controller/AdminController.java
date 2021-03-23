@@ -25,7 +25,7 @@ public class AdminController {
     @RequestMapping(value = "/adminDoLogin")
     @ResponseBody
     public Map adminDoLogin(@RequestBody Admin admin, HttpSession session, HttpServletRequest request) {
-
+        session.setMaxInactiveInterval(60 * 60);
         String idCard = "^[1-9]\\d{5}(18|19|2([0-9]))\\d{2}(0[0-9]|10|11|12)([0-2][1-9]|30|31)\\d{3}[0-9Xx]$";
         Boolean b = ParamCheck.ParamCheck(admin.getId(), admin.getName(), admin.getPassword());
 
