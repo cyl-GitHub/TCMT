@@ -96,6 +96,10 @@ public class ConsultationController {
         message.setType(true);
 
 
+        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
+        HashMap<String, Queue<Message>> adminMessageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("adminMessageQueue");
+
+
         //当游客无id时
         if (message.getUserId() == null || message.getUserId().equals("")) {
 
@@ -133,6 +137,10 @@ public class ConsultationController {
                         if (entry.getValue().equals("等待中")) {
                             message.setAdminId(entry.getKey());
                             admin.put(entry.getKey(), "工作中");
+
+                            messageQueue.remove(message.getAdminId());
+                            adminMessageQueue.remove(message.getAdminId());
+
                             break;
                         }
                     }
@@ -151,15 +159,8 @@ public class ConsultationController {
 
 
         //有客服
-
         map.put("result", "发送成功");
         map.put("message", message);
-
-
-        //将处理好的消息放到application中
-        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
-        HashMap<String, Queue<Message>> adminMessageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("adminMessageQueue");
-
 
         Queue<Message> messages;
         if (!messageQueue.containsKey(message.getAdminId())) {

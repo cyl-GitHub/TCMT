@@ -528,9 +528,9 @@ function showAdminMsgList(message) {
 
     var div1 = div;
     if (!isMe) {
-        div1 = div;
-    } else {
         div1 = div_me;
+    } else {
+        div1 = div;
     }
 
     var html = li + a + avatar + span + div1 + div2;
