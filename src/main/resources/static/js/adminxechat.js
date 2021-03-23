@@ -145,28 +145,18 @@ function disconnect() {
 
 
 function btn_exit() {
-    var content = $("#content").val();
-    var userId = $("#userId").text();
-    var adminId = $("#adminId").text();
 
     $.ajax({
-        url: "/consultationController/exit", dataType: "json",
+        url: "/consultationController/adminExit", dataType: "json",
         type: "POST",
         contentType: "application/json;charset=utf-8",
         //向后端传输的数据
         data: JSON.stringify({
-            userId: userId,
-            adminId: adminId,
-            message: content,
-            image: "",
-            sendTime: "",
             type: true
-
         }),
         //处理后端返回的数据
         success: function (data) {
             window.close();
-
         },
         //处理失败返回的数据
         error: function (data) {
@@ -215,33 +205,27 @@ function sendToChatRoom() {
     var content = $("#content").val();
 
     var userId = $("#userId").text();
-    var adminId = $("#adminId").text();
     // 内容不能为空
     if (content.trim().length < 1) {
         return;
     }
 
     $.ajax({
-        url: "/consultationController/userSend", dataType: "json",
+        url: "/consultationController/adminSend", dataType: "json",
         type: "POST",
         contentType: "application/json;charset=utf-8",
         //向后端传输的数据
         data: JSON.stringify({
             userId: userId,
-            adminId: adminId,
             message: content,
             image: "",
             sendTime: "",
-            type: true
+            type: false
 
         }),
         //处理后端返回的数据
         success: function (data) {
             if (data.result == "发送成功") {
-                uid = data.message.userId;
-                $("#adminId").html(data.message.adminId);
-                $("#userId").html(data.message.userId);
-                //showUserMsg(data);
             } else {
                 showSystemMsg(data.result);
             }
@@ -255,42 +239,6 @@ function sendToChatRoom() {
     $('#content').val('');
     changeBtn();
 }
-
-
-function flushMessage() {
-    var adminId = $("#adminId").text();
-    $.ajax({
-        url: "/consultationController/flushMessage", dataType: "json",
-        type: "POST",
-        contentType: "application/json;charset=utf-8",
-        //向后端传输的数据
-        data: JSON.stringify({
-            adminId: adminId
-        }),
-        //处理后端返回的数据
-        success: function (data) {
-
-            var messages = data.messages;
-
-            if (data != null) {
-                for (var i = 0; i < messages.length; i++) {
-                    showUserMsgList(messages[i]);
-                    if (opendSound) {
-                        // 提示音
-                        if (messages[i].type == false) {
-                            beep();
-                        }
-                    }
-                }
-            }
-        },
-        //处理失败返回的数据
-        error: function (data) {
-
-        }
-    })
-}
-
 
 function adminFlushMessage() {
     $.ajax({

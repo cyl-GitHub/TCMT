@@ -27,7 +27,6 @@ public class ConsultationController {
         if (application.getAttribute("admin") == null) {
             //客服列表
             HashMap<String, String> admin = new HashMap<>();
-            admin.put("121", "等待中");
             application.setAttribute("admin", admin);
         }
 
@@ -96,6 +95,7 @@ public class ConsultationController {
 
         message.setType(true);
 
+
         //当游客无id时
         if (message.getUserId() == null || message.getUserId().equals("")) {
 
@@ -111,6 +111,7 @@ public class ConsultationController {
                         user.put(String.valueOf(i), null);
                         User user1 = new User();
                         user1.setId(String.valueOf(i));
+
                         session.setAttribute("userLogin", user1);
                         break;
                     }
@@ -171,11 +172,84 @@ public class ConsultationController {
 
         if (!messageQueue.containsKey(message.getAdminId())) {
             messageQueue.put(message.getAdminId(), messages);
-            adminMessageQueue.put(message.getAdminId(), messages);
+        }
+
+
+        Queue<Message> messages1;
+        if (!adminMessageQueue.containsKey(message.getAdminId())) {
+            messages1 = new LinkedList<>();
+        } else {
+            messages1 = adminMessageQueue.get(message.getAdminId());
+        }
+
+        messages1.add(message);
+
+        if (!adminMessageQueue.containsKey(message.getAdminId())) {
+            adminMessageQueue.put(message.getAdminId(), messages1);
         }
 
         return map;
     }
+
+
+    //用户发送消息
+    @RequestMapping("/adminSend")
+    @ResponseBody
+    public Map adminSend(@RequestBody Message message, HttpSession session) {
+        Map<String, Object> map = new HashMap();
+        HashMap<String, User> user = (HashMap) application.getAttribute("user");
+        Admin adminLogin = (Admin) session.getAttribute("adminLogin");
+
+        message.setAdminId(adminLogin.getId());
+        message.setType(false);
+
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm");//设置日期格式
+        System.out.println();// new Date()为获取当前系统时间
+
+        message.setSendTime(df.format(new Date()));
+
+
+        map.put("result", "发送成功");
+
+
+        //将处理好的消息放到application中
+        HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
+        HashMap<String, Queue<Message>> adminMessageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("adminMessageQueue");
+
+
+        Queue<Message> messages;
+        if (!messageQueue.containsKey(message.getAdminId())) {
+            messages = new LinkedList<>();
+        } else {
+            messages = messageQueue.get(message.getAdminId());
+        }
+
+        messages.add(message);
+
+        if (!messageQueue.containsKey(message.getAdminId())) {
+            messageQueue.put(message.getAdminId(), messages);
+        }
+
+
+        Queue<Message> messages1;
+        if (!adminMessageQueue.containsKey(message.getAdminId())) {
+            messages1 = new LinkedList<>();
+        } else {
+            messages1 = adminMessageQueue.get(message.getAdminId());
+        }
+
+        messages1.add(message);
+
+        if (!adminMessageQueue.containsKey(message.getAdminId())) {
+            adminMessageQueue.put(message.getAdminId(), messages1);
+        }
+
+        return map;
+    }
+
+
+
 
 
     @RequestMapping("/flushMessage")
@@ -228,10 +302,16 @@ public class ConsultationController {
         Map<String, Object> map = new HashMap();
 
         map.put("messages", messages);
-        String userId = "-1";
+
         if (!messages.isEmpty()) {
-            userId = messages.peek().getUserId();
+            String userId1 = messages.peek().getUserId();
+            if (userId1 != null && !userId1.equals("")) {
+                session.setAttribute("userId", userId1);
+            }
         }
+
+        String userId = (String) session.getAttribute("userId");
+
         map.put("userId", userId);
 
         Queue<Message> messages1 = new LinkedList();
@@ -278,22 +358,15 @@ public class ConsultationController {
     public Map adminExit(@RequestBody Message message, HttpSession session) {
 
         HashMap admin = (HashMap) application.getAttribute("admin");
-        HashMap<String, User> user = (HashMap) application.getAttribute("user");
         HashMap<String, Queue<Message>> messageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("messageQueue");
         HashMap<String, Queue<Message>> adminMessageQueue = (HashMap<String, Queue<Message>>) application.getAttribute("adminMessageQueue");
 
-        if (admin.containsKey(message.getAdminId())) {
-            admin.put(message.getAdminId(), "等待中");
-        }
 
-        if (user.containsKey(message.getUserId())) {
-            user.remove(message.getUserId());
-        }
+        Admin adminLogin = (Admin) session.getAttribute("adminLogin");
 
-        if (messageQueue.containsKey(message.getAdminId())) {
-            messageQueue.remove(message.getAdminId());
-            adminMessageQueue.remove(message.getAdminId());
-        }
+        admin.remove(adminLogin.getId());
+        messageQueue.remove(adminLogin.getId());
+        adminMessageQueue.remove(adminLogin.getId());
 
         return null;
     }

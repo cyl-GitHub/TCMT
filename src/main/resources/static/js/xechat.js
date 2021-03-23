@@ -292,43 +292,6 @@ function flushMessage() {
 }
 
 
-function adminFlushMessage() {
-    $.ajax({
-        url: "/consultationController/adminFlushMessage", dataType: "json",
-        type: "POST",
-        contentType: "application/json;charset=utf-8",
-        //向后端传输的数据
-        data: JSON.stringify({
-            adminId: 1
-        }),
-        //处理后端返回的数据
-        success: function (data) {
-            if (data.userId != "-1") {
-                $("#userId").html(data.userId);
-            }
-
-            var messages = data.messages;
-
-            if (data != null) {
-                for (var i = 0; i < messages.length; i++) {
-                    showAdminMsgList(messages[i]);
-                    if (opendSound) {
-                        // 提示音
-                        if (messages[i].type == true) {
-                            beep();
-                        }
-                    }
-                }
-            }
-        },
-        //处理失败返回的数据
-        error: function (data) {
-
-        }
-    })
-}
-
-
 /**
  * 响应码映射
  * @param date
