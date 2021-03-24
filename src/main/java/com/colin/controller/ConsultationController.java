@@ -93,6 +93,7 @@ public class ConsultationController {
 
             if (userLogin != null) {
                 user.put(String.valueOf(userLogin.getId()), null);
+                message.setUserId(String.valueOf(userLogin.getId()));
             } else {
                 int len = 10000 + user.size();
                 for (int i = 10000; i <= len; i++) {
@@ -296,15 +297,12 @@ public class ConsultationController {
         Map<String, Object> map = new HashMap();
 
         map.put("messages", messages);
-
+        String userId = "-1";
         if (!messages.isEmpty()) {
-            String userId1 = messages.peek().getUserId();
-            if (userId1 != null && !userId1.equals("")) {
-                session.setAttribute("userId", userId1);
+            if (messages.peek().getUserId() != null) {
+                userId = messages.peek().getUserId();
             }
         }
-
-        String userId = (String) session.getAttribute("userId");
 
         map.put("userId", userId);
 

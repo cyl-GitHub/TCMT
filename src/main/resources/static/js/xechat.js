@@ -403,14 +403,6 @@ function showUserMsg(data) {
     var div2 = '<div class="reply-content pr" ' + event + '><span class="arrow">&nbsp;</span>' + showMessage + showImage + '</div></div></li>';
 
     var html = li + a + avatar + span + (data.message.type ? div_me : div) + div2;
-    // var html;
-    //
-    //
-    // if (data.message.type) {
-    //     html = li + a + avatar + span + div + div2;
-    // } else {
-    //     html = li + a + avatar + span + div_me + div2;
-    // }
 
 
     $("#show_content").append(html);
@@ -481,7 +473,7 @@ function showUserMsgList(message) {
     var li = '<li class=' + style_css + '>';
     var a = '<a class="user">';
     var avatar = '<img class="img-responsive avatar_" src=' + user_avatar + '\>';
-    var span = '<span class="user-name">' + message.userId + '</span></a>';
+    var span = '<span class="user-name">' + '</span></a>';
 
     var div_me = '<div class="reply-content-box"><span class="reply-time"><i class="glyphicon glyphicon-time"></i> '
         + message.sendTime + '&nbsp;' + '</span>';

@@ -256,7 +256,6 @@ function adminFlushMessage() {
             }
 
             var messages = data.messages;
-
             if (data != null) {
                 for (var i = 0; i < messages.length; i++) {
                     showAdminMsgList(messages[i]);
@@ -361,37 +360,6 @@ function createUser() {
  * 显示用户消息  有用 ok
  * @param data
  */
-function showUserMsg(data) {
-
-    var user_avatar = "/static/images/avatar/0.jpeg";
-    var user = data.user;
-    var message = data.message;
-    var isMe = data.message.type;
-
-    var style_css = isMe ? 'even' : 'odd';
-    var event = isMe ? 'ondblclick=revokeMessage(this)' : '';
-
-    var showMessage = data.message.message;
-    var showImage = data.message.image == null ? '' : '<div class="show_image"><img src="' + data.message.image + '"/></div>';
-
-    var li = '<li class=' + style_css + ' id=' + data.messageId + ' data-receiver=' + data.receiver + '>';
-    var a = '<a class="user">';
-    var avatar = '<img class="img-responsive avatar_" src=' + user_avatar + '\>';
-    var span = '<span class="user-name">' + message.userId + '</span></a>';
-
-    var div_me = '<div class="reply-content-box"><span class="reply-time"><i class="glyphicon glyphicon-time"></i> '
-        + data.message.sendTime + '&nbsp;' + '</span>';
-
-    var div = '<div class="reply-content-box"><span class="reply-time">'
-        + '&nbsp;<i class="glyphicon glyphicon-time"></i> ' + data.message.sendTime + '</span>';
-
-    var div2 = '<div class="reply-content pr" ' + event + '><span class="arrow">&nbsp;</span>' + showMessage + showImage + '</div></div></li>';
-
-    var html = li + a + avatar + span + (data.message.type ? div_me : div) + div2;
-
-    $("#show_content").append(html);
-    jumpToLow();
-}
 
 //供使用者调用
 function trim(s) {
@@ -442,7 +410,7 @@ function showAdminMsgList(message) {
         user_avatar = "/static/images/avatar/robot.jpeg";
     }
 
-    var style_css = isMe ? 'even' : 'odd';
+    var style_css = isMe ? 'odd' : 'even';
     var event = isMe ? 'ondblclick=revokeMessage(this)' : '';
 
     if (message.image == "") {
@@ -456,7 +424,7 @@ function showAdminMsgList(message) {
     var li = '<li class=' + style_css + '>';
     var a = '<a class="user">';
     var avatar = '<img class="img-responsive avatar_" src=' + user_avatar + '\>';
-    var span = '<span class="user-name">' + message.userId + '</span></a>';
+    var span = '<span class="user-name">' + '</span></a>';
 
     var div_me = '<div class="reply-content-box"><span class="reply-time"><i class="glyphicon glyphicon-time"></i> '
         + message.sendTime + '&nbsp;' + '</span>';
@@ -534,33 +502,6 @@ function showSystemMsg(message) {
     jumpToLow();
 }
 
-
-/**
- * 撤消消息
- * @param messageId
- */
-function revokeMessage(e) {
-    var dom = $(e).parents('li');
-    var messageId = dom.attr('id');
-    var receiver = dom.data('receiver');
-
-    if (messageId === '' || messageId === undefined || !confirm('确定撤回这条消息吗？')) {
-        return;
-    }
-
-    if (receiver === null || receiver === '' || messageId === undefined) {
-        receiver = null;
-    } else {
-        receiver = receiver.split(',');
-    }
-
-    var data = JSON.stringify({
-        'messageId': messageId,
-        'receiver': receiver
-    });
-
-    sendMessage('/chatRoom/revoke', {}, data);
-}
 
 /**
  * 控制按钮显示
