@@ -267,7 +267,7 @@
                 </li>
 
                 <li class="level2-d" onclick="goUrl('/consultationController/AdminConsultation');">
-                    医生加盟
+                    咨询服务
                 </li>
 
             </ul>

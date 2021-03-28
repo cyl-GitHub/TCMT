@@ -112,10 +112,10 @@
                       id="content" onkeyup="changeBtn()"></textarea>
 
             <span id="picture_btn" onclick="selectFile()" class="input-group-addon linear-g right_btn glyphicon
-             glyphicon-picture"></span>
+             glyphicon-picture" style="display: none;"></span>
 
             <span id="send_btn" onclick="sendToChatRoom()" class="input-group-addon linear-g right_btn glyphicon
-             glyphicon-send" style="display: none;"></span>
+             glyphicon-send" ></span>
         </div>
     </div>
     <input type="file" style="display: none" id="file" onchange="sendImage()"/>

@@ -237,7 +237,7 @@ function sendToChatRoom() {
     })
 
     $('#content').val('');
-    changeBtn();
+    /*changeBtn();*/
 }
 
 function adminFlushMessage() {

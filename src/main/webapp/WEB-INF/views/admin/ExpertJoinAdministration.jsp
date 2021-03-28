@@ -278,6 +278,10 @@
                     医生加盟
                 </li>
 
+                <li class="level2-d" onclick="goUrl('/consultationController/AdminConsultation');">
+                    咨询服务
+                </li>
+
             </ul>
         </div>
 
